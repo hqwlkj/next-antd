@@ -6,7 +6,6 @@
   padding: 6rem;
   min-height: 100vh;
 
-
   .description {
     display: inherit;
     justify-content: inherit;
@@ -37,7 +36,6 @@
     }
   }
 
-
   .center {
     display: flex;
     justify-content: center;
@@ -57,7 +55,8 @@
       height: 180px;
       z-index: -1;
     }
-    &:before, &:after {
+    &:before,
+    &:after {
       content: '';
       left: 50%;
       position: absolute;
@@ -83,7 +82,8 @@
     border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: 0 2px 8px -1px #0000001a;
-    &:before, &:after {
+    &:before,
+    &:after {
       content: '';
       position: absolute;
       z-index: -1;
@@ -103,9 +103,9 @@
       padding: 1px;
       border-radius: var(--border-radius);
       background: linear-gradient(
-              to bottom right,
-              rgba(var(--tile-start-rgb), 1),
-              rgba(var(--tile-end-rgb), 1)
+        to bottom right,
+        rgba(var(--tile-start-rgb), 1),
+        rgba(var(--tile-end-rgb), 1)
       );
       background-clip: content-box;
     }
@@ -141,7 +141,6 @@
     max-width: 30ch;
   }
 }
-
 
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
@@ -194,13 +193,13 @@
     }
   }
 
-
   .description {
     font-size: 0.8rem;
     a {
       padding: 1rem;
     }
-    p,div{
+    p,
+    div {
       display: flex;
       justify-content: center;
       position: fixed;
@@ -214,9 +213,9 @@
       border: none;
       border-bottom: 1px solid rgba(var(--callout-border-rgb), 0.25);
       background: linear-gradient(
-              to bottom,
-              rgba(var(--background-start-rgb), 1),
-              rgba(var(--callout-rgb), 0.5)
+        to bottom,
+        rgba(var(--background-start-rgb), 1),
+        rgba(var(--callout-rgb), 0.5)
       );
       background-clip: padding-box;
       backdrop-filter: blur(24px);
@@ -227,11 +226,7 @@
       inset: auto 0 0;
       padding: 2rem;
       height: 200px;
-      background: linear-gradient(
-              to bottom,
-              transparent 0%,
-              rgb(var(--background-end-rgb)) 40%
-      );
+      background: linear-gradient(to bottom, transparent 0%, rgb(var(--background-end-rgb)) 40%);
       z-index: 1;
     }
   }

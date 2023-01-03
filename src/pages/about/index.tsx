@@ -1,9 +1,9 @@
-import type {InferGetStaticPropsType} from "next";
+import type { InferGetStaticPropsType } from 'next';
 import styles from './index.module.less';
-import Layout from "../../layouts";
-import Head from "next/head";
-import React from "react";
-import {NextPageWithLayout} from "../_app";
+import Layout from '../../layouts';
+import Head from 'next/head';
+import React from 'react';
+import { NextPageWithLayout } from '../_app';
 
 export async function getStaticProps() {
   const res = await fetch('https://ip.me');
@@ -11,25 +11,35 @@ export async function getStaticProps() {
   return {
     props: {
       name: 'next-name',
-      age: 23
+      age: 23,
     },
-  }
+  };
 }
-const About: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>> = ({name, age}) =>{
+const About: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>> = ({
+  name,
+  age,
+}) => {
   console.log('==========');
   return (
-    <div className={styles.aboutPage}> this is about page {name}: {age}</div>
-  )
-}
+    <div className={styles.aboutPage}>
+      {' '}
+      this is about page {name}: {age}
+    </div>
+  );
+};
 
 About.getLayout = function getLayout(page: React.ReactElement) {
   return (
-    <Layout head={<Head>
-      <title>about - page</title>
-    </Head>}>
+    <Layout
+      head={
+        <Head>
+          <title>about - page</title>
+        </Head>
+      }
+    >
       {page}
     </Layout>
-  )
-}
+  );
+};
 
 export default About;

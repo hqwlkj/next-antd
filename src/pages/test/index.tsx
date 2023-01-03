@@ -1,12 +1,11 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import type {InferGetStaticPropsType} from "next";
-import Link from "next/link";
-import styles from './index.module.less'
+import Head from 'next/head';
+import Image from 'next/image';
+import { Inter } from '@next/font/google';
+import type { InferGetStaticPropsType } from 'next';
+import Link from 'next/link';
+import styles from './index.module.less';
 
-const inter = Inter({ subsets: ['latin'] })
-
+const inter = Inter({ subsets: ['latin'] });
 
 export async function getServerSideProps() {
   const res = await fetch('https://ip.me');
@@ -15,10 +14,10 @@ export async function getServerSideProps() {
     props: {
       name: 'next-name',
     },
-  }
+  };
 }
 
-export default function Home({name}: InferGetStaticPropsType<typeof getServerSideProps>) {
+export default function Home({ name }: InferGetStaticPropsType<typeof getServerSideProps>) {
   return (
     <>
       <Head>
@@ -39,7 +38,7 @@ export default function Home({name}: InferGetStaticPropsType<typeof getServerSid
               target="_blank"
               rel="noopener noreferrer"
             >
-              By{' '}{name}
+              By {name}
               <Image
                 src="/vercel.svg"
                 alt="Vercel Logo"
@@ -62,13 +61,7 @@ export default function Home({name}: InferGetStaticPropsType<typeof getServerSid
             priority
           />
           <div className={styles.thirteen}>
-            <Image
-              src="/thirteen.svg"
-              alt="13"
-              width={40}
-              height={31}
-              priority
-            />
+            <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
           </div>
         </div>
 
@@ -125,24 +118,17 @@ export default function Home({name}: InferGetStaticPropsType<typeof getServerSid
               Deploy <span>-&gt;</span>
             </h2>
             <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
+              Instantly deploy your Next.js site to a shareable URL with&nbsp;Vercel.
             </p>
           </a>
-          <Link
-            href="/about"
-            className={styles.card}
-            rel="noopener noreferrer"
-          >
+          <Link href="/about" className={styles.card} rel="noopener noreferrer">
             <h2 className={inter.className}>
               About <span>-&gt;</span>
             </h2>
-            <p className={inter.className}>
-              Go to About page
-            </p>
+            <p className={inter.className}>Go to About page</p>
           </Link>
         </div>
       </main>
     </>
-  )
+  );
 }

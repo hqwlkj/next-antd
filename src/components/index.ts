@@ -1,1 +1,1 @@
-export {default as RetroTitle} from './RetroTitle';
+export { default as RetroTitle } from './RetroTitle';

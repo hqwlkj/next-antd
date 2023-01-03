@@ -1,7 +1,8 @@
 @font-face {
   font-family: Attila-Semibold;
   font-display: auto;
-  src: local('AttilaSansUniform-Semibold'), url('/fonts/AttilaSansUniform-Semibold.woff2') format('woff2'),
+  src: local('AttilaSansUniform-Semibold'),
+    url('/fonts/AttilaSansUniform-Semibold.woff2') format('woff2'),
     url('/fonts/AttilaSansUniform-Semibold.woff') format('woff');
   font-style: normal;
   unicode-range: U+000-5FF;
@@ -21,7 +22,8 @@
 @font-face {
   font-family: Attila-Regular;
   font-display: auto;
-  src: local('AttilaSansUniform-Regular'), url('/fonts/AttilaSansUniform-Regular.woff2') format('woff2'),
+  src: local('AttilaSansUniform-Regular'),
+    url('/fonts/AttilaSansUniform-Regular.woff2') format('woff2'),
     url('/fonts/AttilaSansUniform-Regular.woff') format('woff');
   font-style: normal;
   unicode-range: U+000-5FF;
