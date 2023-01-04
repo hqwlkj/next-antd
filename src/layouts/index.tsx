@@ -1,4 +1,5 @@
 import React from 'react';
+import { GlobalFooter } from '@/components';
 import styles from './index.module.less';
 
 interface LayoutProps {
@@ -15,7 +16,9 @@ const Layout = ({ children, head }: LayoutProps) => {
       {head}
       <header className={styles.header}>header</header>
       <main className={styles.main}>{children}</main>
-      <footer className={styles.footer}>footer</footer>
+      <footer className={styles.footer}>
+        <GlobalFooter />
+      </footer>
     </div>
   );
 };

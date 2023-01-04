@@ -26,6 +26,13 @@ const nextConfig = (phase) => {
     reactStrictMode: true,
     productionBrowserSourceMaps: true,
     env,
+    lessLoaderOptions: {
+      cssModules: false,
+      lessOptions: {
+        javascriptEnabled: true,
+        modifyVars: {},
+      },
+    },
   };
 };
 
