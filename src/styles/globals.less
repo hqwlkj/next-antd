@@ -37,9 +37,11 @@
   --card-border-rgb: 131, 134, 135;
 
   // pietra theme colors
-  --pietra--yellow: #f9e070;
-  --pietra--spark: #ff401a;
-  --pietra--pink: #fbf2f0;
+  --pietra-yellow: #f9e070;
+  --pietra-spark: #ff401a;
+  --pietra-pink: #fbf2f0;
+
+  --pietra-global-header-heigth: 88px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -88,9 +90,10 @@ body {
 }
 
 body {
+  padding: 0;
+  margin: 0 auto;
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)))
-    rgb(var(--background-start-rgb));
+  background: #ffffff;
 }
 
 a {

@@ -1,0 +1,92 @@
+.navItemWarp {
+  cursor: pointer;
+  margin: 0 0 0 2rem;
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+
+  :global {
+    .anticon {
+      margin-left: 6px;
+    }
+  }
+
+  > .navItemText {
+    font-family: Attila-Semibold;
+    line-height: 1.2;
+    color: #000;
+  }
+
+  > .navDropdown {
+    z-index: 1;
+    background: #fff;
+    padding: 2rem 1.5rem;
+    border: 2px solid #000;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    flex-direction: column;
+    width: 250px;
+    display: none;
+
+    &:hover {
+      display: flex;
+    }
+
+    > .navItemWarp {
+      margin: 0 0 15px;
+      padding: 0;
+      width: 100%;
+      align-items: flex-start;
+      justify-content: flex-start;
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+
+  &:hover {
+    > .navItemText {
+      color: var(--pietra-spark);
+    }
+
+    > .navDropdown {
+      display: flex;
+    }
+  }
+}
+
+@media screen and (min-width: 200px) {
+  .navItemWarp {
+    > .navItemText {
+      font-size: 12px;
+    }
+  }
+}
+
+@media screen and (min-width: 950px) {
+  .navItemWarp {
+    > .navItemText {
+      font-size: 14px;
+    }
+  }
+}
+
+@media screen and (min-width: 980px) {
+  .navItemWarp {
+    > .navItemText {
+      font-size: 16px;
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .navItemWarp {
+    > .navItemText {
+      font-size: 18px;
+    }
+  }
+}

@@ -50,7 +50,7 @@ const RetroTitle = ({ text, textColor, fontSize }: RetroTitleProps) => {
     };
   }, [fontSize, textColor]);
   return (
-    <div className={styles['retro-title']} style={style}>
+    <div className={styles.retroTitle} style={style}>
       {text}
     </div>
   );
