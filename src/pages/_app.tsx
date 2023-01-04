@@ -6,6 +6,8 @@ import NProgress from 'nprogress';
 import '@/styles/globals.less';
 import '@/styles/fonts.css';
 import 'nprogress/nprogress.css';
+import { ConfigProvider } from 'antd';
+import { createCache, StyleProvider } from '@ant-design/cssinjs';
 
 Router.events.on('routeChangeStart', NProgress.start);
 Router.events.on('routeChangeError', NProgress.done);
@@ -23,5 +25,14 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   // Use the layout defined at the page level, if available
   const getLayout = Component.getLayout ?? ((page) => page);
 
-  return getLayout(<Component {...pageProps} />);
+  // SSR Render
+  const cache = createCache();
+
+  return getLayout(
+    <ConfigProvider>
+      <StyleProvider cache={cache}>
+        <Component {...pageProps} />
+      </StyleProvider>
+    </ConfigProvider>,
+  );
 }

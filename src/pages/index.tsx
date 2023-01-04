@@ -8,6 +8,7 @@ import { NextPageWithLayout } from './_app';
 import React from 'react';
 import Layout from '../layouts';
 import * as process from 'process';
+import { Button, DatePicker, Space } from 'antd';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -26,6 +27,10 @@ const Home: NextPageWithLayout<InferGetStaticPropsType<typeof getServerSideProps
       Where Brands Tell Their Stories: {name}
       <div>env: {process.env.NODE_ENV}</div>
       <div>build - env: {process.env.NODE_ENV}</div>
+      <Space>
+        <DatePicker />
+        <Button type={'primary'}>Primary Button</Button>
+      </Space>
     </div>
   );
 };
