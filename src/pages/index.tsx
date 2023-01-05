@@ -9,6 +9,7 @@ import React from 'react';
 import Layout from '../layouts';
 import * as process from 'process';
 import { Button, DatePicker, Space } from 'antd';
+import useBusinessSettingsDisplay from '@/lib/hooks/common/useBusinessSettingsDisplay';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,6 +23,8 @@ export async function getServerSideProps() {
 }
 
 const Home: NextPageWithLayout<InferGetStaticPropsType<typeof getServerSideProps>> = ({ name }) => {
+  const { value } = useBusinessSettingsDisplay('FEATURED_CREATORS');
+  console.log(value);
   return (
     <div className={styles.container}>
       Where Brands Tell Their Stories: {name}
