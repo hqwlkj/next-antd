@@ -1,0 +1,129 @@
+.marketplaceHero {
+  > .heroSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    > .hero-title {
+      font-family: Attila-Bold;
+      line-height: 1.2;
+      margin-bottom: 5px;
+    }
+
+    > .hero-subtitle {
+      line-height: 1.2;
+      margin: 0 0 30px;
+      width: 100%;
+      max-width: 700px;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .marketplaceHero {
+    > .heroSection {
+      padding: 2rem 1rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mobile {
+      display: block;
+    }
+
+    .desktop {
+      display: none;
+    }
+  }
+}
+
+@media (min-width: 601px) {
+  .marketplaceHero {
+    > .heroSection {
+      margin-bottom: 30px;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+
+      > .hero-title {
+        font-size: 35px;
+      }
+
+      > .hero-subtitle {
+        font-size: 18px;
+        max-width: 550px;
+      }
+    }
+
+    .mobile {
+      display: none;
+    }
+
+    .desktop {
+      display: flex;
+    }
+  }
+}
+
+@media (min-width: 980px) {
+  .marketplaceHero {
+    > .heroSection {
+      > .hero-title {
+        font-size: 40px;
+      }
+
+      > .hero-subtitle {
+        max-width: 600px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1120px) {
+  .marketplaceHero {
+    > .heroSection {
+      align-items: flex-start;
+      text-align: left;
+
+      > .hero-title {
+        font-size: 40px;
+      }
+
+      > .hero-subtitle {
+        max-width: 600px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1300px) {
+  .marketplaceHero {
+    > .heroSection {
+      > .hero-title {
+        font-size: 45px;
+      }
+
+      > .hero-subtitle {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1500px) {
+  .marketplaceHero {
+    > .heroSection {
+      > .hero-title {
+        font-size: 50px;
+      }
+
+      > .hero-subtitle {
+        font-size: 20px;
+      }
+    }
+  }
+}

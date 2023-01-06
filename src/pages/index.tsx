@@ -1,14 +1,10 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import { Inter } from '@next/font/google';
 import type { InferGetStaticPropsType } from 'next';
-import Link from 'next/link';
-import styles from './index.module.less';
 import { NextPageWithLayout } from './_app';
 import React from 'react';
 import Layout from '../layouts';
-import * as process from 'process';
-import { Button, DatePicker, Space } from 'antd';
+import Marketplace from '@/components/Marketplace';
 import useBusinessSettingsDisplay from '@/lib/hooks/common/useBusinessSettingsDisplay';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -22,20 +18,9 @@ export async function getServerSideProps() {
   };
 }
 
-const Home: NextPageWithLayout<InferGetStaticPropsType<typeof getServerSideProps>> = ({ name }) => {
-  const { value } = useBusinessSettingsDisplay('FEATURED_CREATORS');
-  console.log(value);
-  return (
-    <div className={styles.container}>
-      Where Brands Tell Their Stories: {name}
-      <div>env: {process.env.NODE_ENV}</div>
-      <div>build - env: {process.env.NODE_ENV}</div>
-      <Space>
-        <DatePicker />
-        <Button type={'primary'}>Primary Button</Button>
-      </Space>
-    </div>
-  );
+const Home: NextPageWithLayout<InferGetStaticPropsType<typeof getServerSideProps>> = () => {
+  const { value: heroData } = useBusinessSettingsDisplay('MARKETPLACE');
+  return <Marketplace heroData={heroData?.value || {}} />;
 };
 
 Home.getLayout = function getLayout(page: React.ReactElement) {

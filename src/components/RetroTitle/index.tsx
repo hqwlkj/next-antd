@@ -4,7 +4,7 @@ import styles from './index.module.less';
 interface RetroTitleProps {
   text: string | React.ReactNode;
   textColor?: string;
-  fontSize?: 28 | 30 | 45 | 50 | 55;
+  fontSize?: number;
 }
 
 const RetroTitle = ({ text, textColor, fontSize }: RetroTitleProps) => {
@@ -43,10 +43,10 @@ const RetroTitle = ({ text, textColor, fontSize }: RetroTitleProps) => {
     };
     return {
       color: textColor,
-      'font-size': `${fontSize}px`,
-      'text-shadow': textShadow(),
-      'text-stroke': textStroke(),
-      '-webkit-text-stroke': textStroke(),
+      fontSize: `${fontSize}px`,
+      textShadow: textShadow(),
+      textStroke: textStroke(),
+      webkitTextStroke: textStroke(),
     };
   }, [fontSize, textColor]);
   return (

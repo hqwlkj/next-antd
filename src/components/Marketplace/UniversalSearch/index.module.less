@@ -1,0 +1,137 @@
+.searchContainer {
+  display: flex;
+  height: val(--search-input-height);
+  position: relative;
+  top: auto;
+  margin: 0;
+  width: 100%;
+  max-width: 800px;
+
+  > input {
+    position: relative;
+    width: -moz-available;
+    height: 100%;
+    background: #fff;
+    padding: 10px 14px;
+    border: 2px solid #000;
+    border-left: none;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-size: 14px;
+
+    &::-webkit-input-placeholder {
+      color: #9b9b9b !important;
+      font-style: italic;
+      font-size: 16px;
+    }
+
+    &::-moz-placeholder {
+      color: #9b9b9b !important;
+      font-style: italic;
+      font-size: 16px;
+    }
+
+    &:-moz-placeholder {
+      color: #9b9b9b !important;
+      font-style: italic;
+      font-size: 16px;
+    }
+
+    &:-ms-input-placeholder {
+      color: #000 !important;
+      font-style: italic;
+      font-size: 16px;
+    }
+  }
+
+  > .searchButton {
+    height: 100%;
+    display: flex;
+    background: #fff;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    border: 2px solid #000;
+    border-right: none;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    margin-right: -3px;
+
+    > .v-icon {
+      font-size: 22px !important;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  > .searchSuggestionsContainer {
+    position: absolute;
+    top: calc(val(--search-input-height) - 2px);
+    left: 10px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    min-width: calc(100% - 22px - 10px);
+    min-height: 75px;
+    z-index: 3;
+    border: 2px solid #000;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding-bottom: 0.5rem;
+
+    > .wrapper {
+      display: flex;
+      flex-direction: column;
+
+      > .header {
+        background: val(--off-white);
+        padding: 1rem;
+        width: 100%;
+      }
+
+      > .suggestion {
+        padding: 0.65rem 1rem;
+
+        &:hover {
+          cursor: pointer;
+          background: val(--off-white);
+
+          a,
+          span {
+            text-decoration: underline;
+          }
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        > a,
+        > span {
+          display: flex;
+        }
+
+        > .store {
+          display: flex;
+          align-items: center;
+
+          > img {
+            .border-radius('circle') {
+            }
+
+            width: 23px;
+            height: 23px;
+            object-fit: cover;
+            margin-right: 7px;
+          }
+
+          > span {
+            margin-top: 2px;
+          }
+        }
+      }
+    }
+  }
+}

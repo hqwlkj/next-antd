@@ -3,6 +3,7 @@ import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import { Router } from 'next/router';
 import NProgress from 'nprogress';
+import '@/styles/mixins.less';
 import '@/styles/globals.less';
 import '@/styles/fonts.css';
 import 'nprogress/nprogress.css';
