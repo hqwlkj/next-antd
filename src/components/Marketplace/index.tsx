@@ -1,10 +1,11 @@
 import React from 'react';
 import Hero from './Hero';
+import styles from './index.module.less';
 
-const Home = ({ heroData }: { heroData: any }) => {
+const Home = ({ isMobile }: { isMobile: boolean }) => {
   return (
-    <div className="app-home">
-      <Hero heroData={heroData} />
+    <div className={styles.appHome}>
+      <Hero isMobile={isMobile} />
     </div>
   );
 };

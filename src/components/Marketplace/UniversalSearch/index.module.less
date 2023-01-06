@@ -1,13 +1,15 @@
 .searchContainer {
   display: flex;
-  height: val(--search-input-height);
+  height: var(--search-input-height);
   position: relative;
   top: auto;
   margin: 0;
   width: 100%;
   max-width: 800px;
 
-  > input {
+  > .searchInput {
+    width: 100%;
+    outline: none;
     position: relative;
     width: -moz-available;
     height: 100%;
@@ -68,7 +70,7 @@
 
   > .searchSuggestionsContainer {
     position: absolute;
-    top: calc(val(--search-input-height) - 2px);
+    top: calc(var(--search-input-height) - 2px);
     left: 10px;
     background: #fff;
     display: flex;
@@ -86,7 +88,7 @@
       flex-direction: column;
 
       > .header {
-        background: val(--off-white);
+        background: var(--off-white);
         padding: 1rem;
         width: 100%;
       }
@@ -96,7 +98,7 @@
 
         &:hover {
           cursor: pointer;
-          background: val(--off-white);
+          background: var(--off-white);
 
           a,
           span {

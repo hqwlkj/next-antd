@@ -1,4 +1,5 @@
 import { IxParams } from '@/shared/typings';
+import { IncomingMessage } from 'http';
 
 export const isS3Image = (url: string) => {
   return url?.includes('static.pietrastudio.com') ?? false;
@@ -18,11 +19,8 @@ export function imgix(v: string, params?: IxParams) {
   return url.toString();
 }
 
-export const isMobile = () => {
-  if (process.browser) {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator.userAgent,
-    );
-  }
-  return false;
+export const isMobileByUserAgent = (userAgent: string) => {
+  return Boolean(
+    userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i),
+  );
 };

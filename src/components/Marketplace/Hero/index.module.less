@@ -1,20 +1,53 @@
 .marketplaceHero {
+  display: grid;
+  background: var(--pietra-yellow);
+  border: 2px solid #000;
+  border-top: none;
+  min-height: 412px;
+  margin: 0;
+
   > .heroSection {
     display: flex;
     flex-direction: column;
     justify-content: center;
 
-    > .hero-title {
+    > .heroTitle {
       font-family: Attila-Bold;
       line-height: 1.2;
       margin-bottom: 5px;
     }
 
-    > .hero-subtitle {
+    > .heroSubtitle {
       line-height: 1.2;
       margin: 0 0 30px;
       width: 100%;
       max-width: 700px;
+    }
+
+    > .heroSearchTerms {
+      margin-top: 30px;
+
+      > .heroSearchTermPlaceholder {
+        margin: 0 15px 15px 0;
+        border: 2px solid #fff;
+        background: #f4f4f5;
+        height: 35px;
+      }
+
+      > .heroSearchTerm {
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 250ms ease-in-out;
+        line-height: 1;
+        padding: 8px 15px;
+        border: 2px solid #fff;
+        margin: 0 15px 15px 0;
+        color: #000;
+
+        &:hover {
+          background: #fff;
+        }
+      }
     }
   }
 }
@@ -42,6 +75,11 @@
 
 @media (min-width: 601px) {
   .marketplaceHero {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    padding: 5rem 1rem;
+
     > .heroSection {
       margin-bottom: 30px;
       justify-content: center;
@@ -49,13 +87,25 @@
       text-align: center;
       width: 100%;
 
-      > .hero-title {
+      > .heroTitle {
         font-size: 35px;
       }
 
-      > .hero-subtitle {
+      > .heroSubtitle {
         font-size: 18px;
         max-width: 550px;
+      }
+
+      > .heroSearchTerms {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+        > .heroSearchTerm {
+          font-size: 12px;
+        }
       }
     }
 
@@ -71,13 +121,21 @@
 
 @media (min-width: 980px) {
   .marketplaceHero {
+    padding: 5rem 3rem;
+
     > .heroSection {
-      > .hero-title {
+      > .heroTitle {
         font-size: 40px;
       }
 
-      > .hero-subtitle {
+      > .heroSubtitle {
         max-width: 600px;
+      }
+
+      > .heroSearchTerms {
+        > .hero-search-term {
+          font-size: 14px;
+        }
       }
     }
   }
@@ -85,16 +143,27 @@
 
 @media (min-width: 1120px) {
   .marketplaceHero {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 3rem;
+    background: var(--pietra-yellow);
+    border: 2px solid #000;
+    margin-bottom: 0;
+
     > .heroSection {
       align-items: flex-start;
       text-align: left;
 
-      > .hero-title {
+      > .heroTitle {
         font-size: 40px;
       }
 
-      > .hero-subtitle {
+      > .heroSubtitle {
         max-width: 600px;
+      }
+
+      > .heroSearchTerms {
+        justify-content: flex-start;
       }
     }
   }
@@ -103,11 +172,11 @@
 @media (min-width: 1300px) {
   .marketplaceHero {
     > .heroSection {
-      > .hero-title {
+      > .heroTitle {
         font-size: 45px;
       }
 
-      > .hero-subtitle {
+      > .heroSubtitle {
         font-size: 18px;
       }
     }
@@ -116,12 +185,14 @@
 
 @media (min-width: 1500px) {
   .marketplaceHero {
+    grid-template-columns: 60% 40%;
+
     > .heroSection {
-      > .hero-title {
+      > .heroTitle {
         font-size: 50px;
       }
 
-      > .hero-subtitle {
+      > .heroSubtitle {
         font-size: 20px;
       }
     }

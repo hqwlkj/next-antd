@@ -1,26 +1,26 @@
 import Head from 'next/head';
 import { Inter } from '@next/font/google';
-import type { InferGetStaticPropsType } from 'next';
+import type { GetServerSidePropsContext, InferGetStaticPropsType } from 'next';
 import { NextPageWithLayout } from './_app';
 import React from 'react';
 import Layout from '../layouts';
 import Marketplace from '@/components/Marketplace';
-import useBusinessSettingsDisplay from '@/lib/hooks/common/useBusinessSettingsDisplay';
+import { isMobileByUserAgent } from '@/shared/utils';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export async function getServerSideProps() {
-  const res = await fetch('https://ip.me');
+export async function getServerSideProps({ req, res }: GetServerSidePropsContext) {
+  const userAgent = req.headers['user-agent'] || '';
+  const isMobile = isMobileByUserAgent(userAgent);
   return {
-    props: {
-      name: 'next-name',
-    },
+    props: { isMobile },
   };
 }
 
-const Home: NextPageWithLayout<InferGetStaticPropsType<typeof getServerSideProps>> = () => {
-  const { value: heroData } = useBusinessSettingsDisplay('MARKETPLACE');
-  return <Marketplace heroData={heroData?.value || {}} />;
+const Home: NextPageWithLayout<InferGetStaticPropsType<typeof getServerSideProps>> = ({
+  isMobile,
+}) => {
+  return <Marketplace isMobile={isMobile} />;
 };
 
 Home.getLayout = function getLayout(page: React.ReactElement) {
