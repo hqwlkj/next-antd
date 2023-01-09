@@ -1,8 +1,9 @@
 {
-  "name": "pietra-next-app",
+  "name": "pietra-marketplace",
   "version": "0.1.0",
   "private": true,
   "license": "ISC",
+  "repository": "https://gitlab.com/pietrastudio/web/pietra-marketplace",
   "scripts": {
     "analyze": "cross-env ANALYZE=true yarn build",
     "dev": "next dev -p 4100",
