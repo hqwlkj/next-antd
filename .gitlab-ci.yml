@@ -1,7 +1,7 @@
 variables:
   AWS_REGISTRY: 411720925788.dkr.ecr.us-east-1.amazonaws.com
   AWS_REGION: us-east-1
-  AWS_EB_PLATFORM: "arn:aws:elasticbeanstalk:us-east-1::platform/Docker running on 64bit Amazon Linux 2/3.5.3"
+  EB_APPLICATION_NAME: pietra-marketplace
   IMAGE_NAME: $AWS_REGISTRY/pietra-marketplace
   IMAGE_TAG: $CI_COMMIT_SHORT_SHA
 
@@ -41,13 +41,14 @@ stages:
 
 .deploy:
   image: coxauto/aws-ebcli
+  variables:
+    EB_PLATFORM: "Docker running on 64bit Amazon Linux 2"
   before_script:
     - echo IMAGE_NAME_TAG=$IMAGE_NAME:$IMAGE_TAG >> .env
     - echo APP_ENV=$APP_ENV >> .env
   script:
-    - eb init pietra-marketplace -r $AWS_REGION -p "$AWS_EB_PLATFORM"
-    - eb use $AWS_EB_ENV
-    - eb deploy --timeout 30
+    - eb init -r $AWS_REGION -p "$EB_PLATFORM" $EB_APPLICATION_NAME
+    - eb deploy $EB_ENV --timeout 30
   #    - curl -sSLf -o /dev/null --retry 3 --retry-connrefused --retry-delay 30 $CI_ENVIRONMENT_URL
   tags:
     - docker
@@ -62,7 +63,7 @@ deploy:staging:
     - build
   variables:
     APP_ENV: staging
-    AWS_EB_ENV: pietramarketplace-staging-env
+    EB_ENV: pietramarketplace-staging-env
   only:
     - master
   environment:
@@ -76,7 +77,7 @@ deploy:production:
     - build
   variables:
     APP_ENV: production
-    AWS_EB_ENV: pietramarketplace-prod-env
+    EB_ENV: pietramarketplace-prod-env
   only:
     - /^v.+$/
   environment:
