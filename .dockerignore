@@ -1,0 +1,10 @@
+**/*
+
+!public
+!src
+!package.json
+!yarn.lock
+!.env
+!.env.*
+!next.config.js
+!tsconfig.json
