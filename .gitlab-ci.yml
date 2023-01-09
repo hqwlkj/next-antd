@@ -45,7 +45,7 @@ stages:
     - echo IMAGE_NAME_TAG=$IMAGE_NAME:$IMAGE_TAG >> .env
     - echo APP_ENV=$APP_ENV >> .env
   script:
-    - eb init pietra-website -r $AWS_REGION -p "$AWS_EB_PLATFORM"
+    - eb init pietra-marketplace -r $AWS_REGION -p "$AWS_EB_PLATFORM"
     - eb use $AWS_EB_ENV
     - eb deploy --timeout 30
   #    - curl -sSLf -o /dev/null --retry 3 --retry-connrefused --retry-delay 30 $CI_ENVIRONMENT_URL
