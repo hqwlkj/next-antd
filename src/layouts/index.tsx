@@ -11,15 +11,15 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 
-export async function getServerSideProps() {
-  const res = await fetch(
-    `https://api.pietrastudio.com/commons/business-settings/DISPLAY/CATEGORY_NAV_DROPDOWN_ITEMS`,
-  );
-  console.log('res:', res);
-  return {
-    categoryNavDropdownItems: [],
-  };
-}
+// export async function getServerSideProps() {
+//   const res = await fetch(
+//     `https://api.pietrastudio.com/commons/business-settings/DISPLAY/CATEGORY_NAV_DROPDOWN_ITEMS`,
+//   );
+//   console.log('res:', res);
+//   return {
+//     categoryNavDropdownItems: [],
+//   };
+// }
 const Layout = ({ children, head }: LayoutProps) => {
   const { pathname } = useRouter();
 
