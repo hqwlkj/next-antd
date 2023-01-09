@@ -8,6 +8,7 @@ import { SearchSuggestions } from '@/types/marketplace';
 import { convertSuggestions, imageTransform, shopAllLink } from '@/shared/utils';
 import Link from 'next/link';
 import classNames from 'classnames';
+import { useRouter } from 'next/router';
 
 const UniversalSearch = () => {
   const subcategoryValueMap = getSubcategoryValueToTextMap();
@@ -16,17 +17,19 @@ const UniversalSearch = () => {
   const [showSuggestionsContainer, setShowSuggestionsContainer] = useState(false);
   const [searchQuery, setSearchQuery] = useState<string>('');
 
+  const router = useRouter();
+
   const searchMarketplace = () => {
     console.log(searchQuery);
     setShowSearchOverlay(false);
+    router.push(
+      shopAllLink(searchQuery, {
+        text: searchQuery,
+        scrollToTop: true,
+      }),
+    );
     //TODO logNavLinkClick(searchQuery)
     //logNavLinkClick(searchQuery)
-    // this.$router.push({
-    //   path: this.shopAllLink(searchQuery, {
-    //     text: searchQuery,
-    //     scrollToTop: true,
-    //   }),
-    // });
   };
 
   const handleSuggestionClick = (search: boolean, text: string = null) => {

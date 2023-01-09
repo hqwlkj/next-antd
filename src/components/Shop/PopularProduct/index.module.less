@@ -1,0 +1,126 @@
+.popularProduct {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  > .popularProductImage {
+    width: 140px !important;
+    height: 140px !important;
+    margin-right: 1rem;
+  }
+
+  > .productInformationPlaceholder {
+    width: calc(100% - 140px);
+
+    > div {
+      height: 10px;
+      width: 100%;
+      margin-bottom: 10px;
+      background-color: var(--grey-light);
+
+      &:last-child {
+        width: 80%;
+      }
+    }
+  }
+
+  > .information {
+    width: calc(100% - 140px);
+
+    > .productName {
+      display: block;
+      font-family: Labil-Bold;
+      line-height: 1.2;
+      font-size: 16px;
+      color: #000;
+      margin: 0 0 5px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 680px) {
+        font-size: 12px;
+      }
+    }
+
+    > .storeName {
+      display: block;
+      font-family: Attila-Semibold;
+      line-height: 1.2;
+      font-size: 13px;
+      color: #666565;
+      margin: 0;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 680px) {
+        font-size: 12px;
+      }
+    }
+
+    > .productPrice {
+      display: block;
+      font-size: 12px;
+      color: #666565;
+      margin: 0;
+      cursor: pointer;
+
+      @media (max-width: 680px) {
+        font-size: 11px;
+      }
+    }
+  }
+}
+
+@media (max-width: 680px) {
+  .popularProduct {
+    > .popular-product-image {
+      width: 70px !important;
+      height: 70px !important;
+      margin-right: 0.5rem !important;
+    }
+
+    > .information {
+      width: calc(100% - 70px);
+
+      > .productName {
+        display: block;
+        font-family: Labil-Bold;
+        line-height: 1.2;
+        font-size: 12px;
+        color: #000;
+        margin: 0 0 5px;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      > .storeName {
+        display: block;
+        font-family: Attila-Semibold;
+        line-height: 1.2;
+        font-size: 11px;
+        color: #666565;
+        margin: 0;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      > .productPrice {
+        display: block;
+        font-size: 11px;
+        color: #666565;
+        margin: 0;
+        cursor: pointer;
+      }
+    }
+  }
+}

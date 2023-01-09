@@ -155,3 +155,15 @@ export const shopAllLink = (title: string, params: any) => {
   const urlPath = title ? new URLSearchParams({ ...params, title }) : '';
   return `/shop/all?${urlPath}`;
 };
+
+export const zeroPaddedNumber = (num: number): string => {
+  return `${num}`.padStart(2, '0');
+};
+
+export const formatPrice = (price: string): string => {
+  if (!price) return '';
+
+  return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(
+    parseFloat(price),
+  );
+};

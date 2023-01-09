@@ -1,2 +1,99 @@
-.appHome {
+.marketplace {
+  color: rgba(0, 0, 0, 0.87);
+  padding: 0 0 100px;
+  overflow-x: hidden;
+
+  > .marketplaceBody {
+    display: flex;
+    justify-content: space-between;
+    padding: 3rem;
+
+    > .featuredCreatorsContainer {
+      min-height: 500px;
+      width: 75%;
+      padding: 0 1rem;
+      border-top: 2px solid #000;
+    }
+
+    > .featuredProductsContainer {
+      min-height: 500px;
+      width: 25%;
+      padding: 2rem 1rem;
+      border: 2px solid #000;
+
+      > .titleContainer {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+
+        > .title {
+          line-height: 1;
+          font-family: Attila-Bold;
+          font-size: 24px;
+        }
+
+        > .star {
+          width: 24px;
+          height: auto;
+          margin-left: 5px;
+          transform: translateY(-2px);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .marketplace {
+    > .marketplaceBody {
+      > .featuredProductsContainer {
+        min-height: 180px;
+      }
+
+      > .featuredCreatorsContainer {
+        min-height: 300px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1120px) {
+  .marketplace {
+    > .marketplaceBody {
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap-reverse;
+
+      > .titleContainer {
+        width: 100%;
+        display: flex;
+        align-items: center;
+
+        > .title {
+          line-height: 1;
+          font-family: Attila-Bold;
+          font-size: 18px;
+        }
+
+        > .star {
+          width: 18px;
+          height: auto;
+          margin-left: 5px;
+          transform: translateY(-2px);
+        }
+      }
+
+      > .featuredProductsContainer {
+        width: 100%;
+        border-top: none;
+      }
+
+      > .featuredCreatorsContainer {
+        padding: 0;
+        width: 100%;
+        border: none;
+      }
+    }
+  }
 }

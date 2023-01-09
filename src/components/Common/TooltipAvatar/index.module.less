@@ -1,0 +1,86 @@
+.tooltipAvatar {
+  position: absolute;
+  width: 150px;
+  height: 120px;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+
+  > .tooltipElement {
+    transition: all 300ms ease-in-out;
+    transform: translateY(8px);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
+    width: 100%;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    > .tooltip {
+      z-index: 2;
+      padding: 1rem 1.5rem;
+      background: var(--pietra-spark);
+      text-align: center;
+
+      > .goToShop {
+        background: var(--pietra-spark);
+        color: #fff;
+        text-decoration: underline;
+        font-size: 14px;
+      }
+    }
+
+    > .arrow {
+      z-index: 1;
+      border: solid var(--pietra-spark);
+      background: var(--pietra-spark);
+      border-width: 0 3px 3px 0;
+      padding: 10px;
+      transform: rotate(45deg) translate(-14px, -10px);
+      -webkit-transform: rotate(45deg) translate(-14px, -10px);
+    }
+
+    &:hover {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  > .avatar {
+    cursor: pointer;
+    z-index: 2;
+
+    img {
+      transition: all 300ms ease;
+      border-radius: 100%;
+      border: 2px solid #fff;
+      width: 42px;
+      height: 42px;
+      object-fit: cover;
+    }
+
+    &:hover {
+      img {
+        border: 2px solid var(--pietra-spark);
+      }
+
+      + .tooltip-element {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .tooltipAvatar {
+    > .avatar {
+      img {
+        width: 35px;
+        height: 35px;
+      }
+    }
+  }
+}
