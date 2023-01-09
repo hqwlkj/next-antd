@@ -314,3 +314,54 @@ export interface TextPlaceholderLine {
   width: string;
   color: string;
 }
+
+export interface SuggestionsCategories {
+  text: string;
+  value: any;
+  param: string;
+}
+
+export interface SearchSuggestions {
+  stores?: StoreItem[];
+  items?: any[];
+  categories?: SuggestionsCategories[];
+}
+
+export interface StoreItem {
+  avatarUrl: string;
+  handle: string;
+  instagram: string;
+  addressName: string;
+  id: string;
+  title: string;
+}
+
+export interface Engine {
+  name: string;
+  type: string;
+}
+
+export interface Page {
+  current: number;
+  total_pages: number;
+  total_results: number;
+  size: number;
+}
+
+export interface StoreListMeta {
+  alerts: any[];
+  warnings: any[];
+  precision: number;
+  engine: Engine;
+  page: Page;
+  request_id: string;
+}
+
+export interface SuggestionsData {
+  list: string[];
+  storeList: StoreItem[];
+  storeListMeta: StoreListMeta;
+  categories: any[];
+  materials: any[];
+  gemstones: any[];
+}

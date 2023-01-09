@@ -5,7 +5,7 @@
   "license": "ISC",
   "scripts": {
     "analyze": "cross-env ANALYZE=true yarn build",
-    "dev": "next dev",
+    "dev": "next dev -p 4100",
     "build": "next build",
     "start": "next start",
     "serve": "serve .next/analyze",

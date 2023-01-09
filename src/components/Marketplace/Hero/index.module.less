@@ -11,6 +11,27 @@
     flex-direction: column;
     justify-content: center;
 
+    &.heroImageSection {
+      flex-direction: row;
+      justify-content: flex-end;
+
+      > .heroImagePlaceholder {
+        .border-radius('small') {
+        }
+
+        width: 100%;
+        height: 250px;
+        background: #f4f4f5;
+      }
+
+      > .heroImageLink {
+        > .heroImage {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+
     > .heroTitle {
       font-family: Attila-Bold;
       line-height: 1.2;
@@ -71,6 +92,12 @@
       display: none;
     }
   }
+}
+
+.skeletonDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media (min-width: 601px) {

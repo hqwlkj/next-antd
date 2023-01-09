@@ -20,6 +20,7 @@
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     font-size: 14px;
+    color: black;
 
     &::-webkit-input-placeholder {
       color: #9b9b9b !important;
@@ -59,7 +60,8 @@
     border-bottom-left-radius: 10px;
     margin-right: -3px;
 
-    > .v-icon {
+    > span {
+      color: black;
       font-size: 22px !important;
 
       &:hover {
@@ -120,9 +122,7 @@
           align-items: center;
 
           > img {
-            .border-radius('circle') {
-            }
-
+            border-radius: 50%;
             width: 23px;
             height: 23px;
             object-fit: cover;

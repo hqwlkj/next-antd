@@ -8,11 +8,13 @@ import useBusinessSettingsDisplay from '@/lib/hooks/common/useBusinessSettingsDi
 import { SearchTerm } from '@/types/marketplace';
 import { createShopAllQueryString } from '@/shared/marketplace';
 import Link from 'next/link';
+import { Skeleton } from 'antd';
+import { imageTransform } from '@/shared/utils';
 
 const Hero = ({ isMobile }: { isMobile: boolean }) => {
   const { value: heroValue } = useBusinessSettingsDisplay('MARKETPLACE');
   const { value: termsValue } = useBusinessSettingsDisplay('MARKETPLACE_SEARCH_TERMS');
-  const heroData = heroValue?.value || {};
+  const heroData = heroValue?.value;
 
   const formatSearchTerms = (searchTerms: SearchTerm[]) => {
     return searchTerms.map((term) => {
@@ -49,31 +51,67 @@ const Hero = ({ isMobile }: { isMobile: boolean }) => {
     //   this.$gtm
     // )
   };
+
+  const mobileSection = (
+    <div className={classNames(styles.heroSection, styles.mobile)}>
+      <CatchPhrase fontSize={retroFontSize()} />
+    </div>
+  );
+
+  const desktopSection = heroData ? (
+    <div className={classNames(styles.heroSection, styles.desktop)}>
+      <span className={styles.heroTitle}>{heroData.title}</span>
+      <span className={styles.heroSubtitle}>{heroData.subtitle}</span>
+      <UniversalSearch />
+      <div className={styles.heroSearchTerms}>
+        {searchTerms.map((term, index) => (
+          <Link
+            v-for="term in searchTerms"
+            key={index}
+            href={term.path}
+            className={styles.heroSearchTerm}
+            onClick={() => logItemClick(term.text)}
+          >
+            {term.text}
+          </Link>
+        ))}
+      </div>
+    </div>
+  ) : (
+    <Skeleton active />
+  );
+
+  const heroImageSection = heroData ? (
+    <div className={classNames(styles.heroSection, styles.heroImageSection)}>
+      <Link
+        href={heroData.imageLinkPath ?? ''}
+        className={styles.heroImageLink}
+        onClick={() => logItemClick('')}
+      >
+        <img
+          className={styles.heroImage}
+          src={imageTransform(heroData.image, 'large')}
+          alt="Pietra Creator Marketplace"
+          title="Pietra Creator Marketplace"
+          loading="eager"
+        />
+      </Link>
+    </div>
+  ) : (
+    <div className={styles.skeletonDiv}>
+      <Skeleton.Image active />
+    </div>
+  );
+
   return (
     <div className={styles.marketplaceHero}>
       {isMobile ? (
-        <div className={classNames(styles.heroSection, styles.mobile)}>
-          <CatchPhrase fontSize={retroFontSize()} />
-        </div>
+        mobileSection
       ) : (
-        <div className={classNames(styles.heroSection, styles.desktop)}>
-          <span className={styles.heroTitle}>{heroData.title}</span>
-          <span className={styles.heroSubtitle}>{heroData.subtitle}</span>
-          <UniversalSearch />
-          <div className={styles.heroSearchTerms}>
-            {searchTerms.map((term, index) => (
-              <Link
-                v-for="term in searchTerms"
-                key={index}
-                href={term.path}
-                className={styles.heroSearchTerm}
-                onClick={() => logItemClick(term.text)}
-              >
-                {term.text}
-              </Link>
-            ))}
-          </div>
-        </div>
+        <>
+          {desktopSection}
+          {heroImageSection}
+        </>
       )}
     </div>
   );
