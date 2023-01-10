@@ -10,6 +10,7 @@ import 'nprogress/nprogress.css';
 import { ConfigProvider as AntdConfigProvider } from 'antd';
 import { createCache, StyleProvider } from '@ant-design/cssinjs';
 import ConfigProvider from '@/context/ConfigProvider';
+import ShoppingCartProvider from '@/context/ShoppingCartProvider';
 
 Router.events.on('routeChangeStart', NProgress.start);
 Router.events.on('routeChangeError', NProgress.done);
@@ -33,7 +34,9 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <AntdConfigProvider>
       <StyleProvider cache={cache}>
-        <ConfigProvider>{getLayout(<Component {...pageProps} />)}</ConfigProvider>
+        <ConfigProvider>
+          <ShoppingCartProvider>{getLayout(<Component {...pageProps} />)}</ShoppingCartProvider>
+        </ConfigProvider>
       </StyleProvider>
     </AntdConfigProvider>
   );

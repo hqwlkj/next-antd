@@ -9,9 +9,9 @@ const inter = Inter({ subsets: ['latin'] });
 
 export async function getServerSideProps() {
   const res = await fetch('https://ip.me');
-  console.log('res:', res);
   return {
     props: {
+      res,
       name: 'next-name',
     },
   };

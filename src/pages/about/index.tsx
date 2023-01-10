@@ -19,7 +19,6 @@ const About: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>> 
   name,
   age,
 }) => {
-  console.log('==========');
   return (
     <div className={styles.aboutPage}>
       {' '}

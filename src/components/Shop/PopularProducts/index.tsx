@@ -26,8 +26,6 @@ const PopularProducts = ({
     // TODO
   };
 
-  console.log(products);
-
   return (
     <div className={classNames(styles.popularProductsContainer, vertical ? styles.vertical : '')}>
       <div className={styles.titleContainer}>

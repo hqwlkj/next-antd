@@ -20,7 +20,6 @@ const UniversalSearch = () => {
   const router = useRouter();
 
   const searchMarketplace = () => {
-    console.log(searchQuery);
     setShowSearchOverlay(false);
     router.push(
       shopAllLink(searchQuery, {

@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './index.module.less';
 import { useRouter } from 'next/router';
-import GlobalHeader from '@/components/Layouts/GlobalHeader';
-import GlobalFooter from '@/components/Layouts/GlobalFooter';
+import { GlobalHeader, GlobalFooter } from '@/components/Layouts';
 import { useConfigProvider } from '@/context/ConfigProvider';
+import classNames from 'classnames';
 
 interface LayoutProps {
   /**
@@ -24,7 +24,7 @@ interface LayoutProps {
 // }
 const Layout = ({ children, head }: LayoutProps) => {
   const { pathname } = useRouter();
-  const { menus, isMobile } = useConfigProvider();
+  const { menus, isMobile, isShopPage } = useConfigProvider();
 
   return (
     <div className={styles.layout}>
@@ -33,6 +33,7 @@ const Layout = ({ children, head }: LayoutProps) => {
         <GlobalHeader
           isMobile={isMobile}
           isMarketplaceHome={pathname === '/'}
+          isShopPage={isShopPage}
           navItems={[
             {
               text: 'Shop All',
@@ -51,7 +52,13 @@ const Layout = ({ children, head }: LayoutProps) => {
           ]}
         />
       </header>
-      <main className={styles.main}>{children}</main>
+      <main
+        className={classNames(styles.main, {
+          [styles.mobile]: isMobile,
+        })}
+      >
+        {children}
+      </main>
       <footer className={styles.footer}>
         <GlobalFooter />
       </footer>

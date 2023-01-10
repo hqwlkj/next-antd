@@ -4,7 +4,9 @@ import classNames from 'classnames';
 import { useMemo } from 'react';
 import styles from './index.module.less';
 import RetroTitle from '@/components/Common/RetroTitle';
-import NavItem, { MarketplaceNavItem } from '@/components/Layouts/NavItem';
+import type { MarketplaceNavItem } from '@/components/Layouts';
+import { NavItem, ShoppingCart, MobileHeader } from '@/components/Layouts';
+import UniversalSearch from '@/components/Marketplace/UniversalSearch';
 
 interface GlobalHeaderProps {
   isShopPage?: boolean;
@@ -12,7 +14,7 @@ interface GlobalHeaderProps {
   navItems?: MarketplaceNavItem[];
   isMobile?: boolean;
 }
-const GlobalHeader = ({ navItems, isShopPage, isMarketplaceHome }: GlobalHeaderProps) => {
+const GlobalHeader = ({ navItems, isShopPage, isMarketplaceHome, isMobile }: GlobalHeaderProps) => {
   const getNavLeftSection = useMemo(() => {
     if (!!isMarketplaceHome) {
       return (
@@ -36,14 +38,30 @@ const GlobalHeader = ({ navItems, isShopPage, isMarketplaceHome }: GlobalHeaderP
         </div>
       );
     } else {
-      return <div>search</div>;
+      return (
+        <div className={styles.navSearch}>
+          <Link href="/">
+            <Image
+              className={styles.sparkStone}
+              src="/images/layouts/spark-stone-logo.png"
+              alt="Pietra"
+              title="Pietra"
+              width={40}
+              height={11}
+            />
+          </Link>
+          <UniversalSearch />
+        </div>
+      );
     }
   }, [isMarketplaceHome]);
 
   const renderNavRightSection = useMemo(() => {
     return navItems?.map((item, index) => <NavItem item={item} key={index} />);
   }, [navItems]);
-
+  if (isMobile) {
+    return <MobileHeader />;
+  }
   return (
     <div
       className={classNames(styles.globalHeaderWarp, {
@@ -51,7 +69,10 @@ const GlobalHeader = ({ navItems, isShopPage, isMarketplaceHome }: GlobalHeaderP
       })}
     >
       <div className={styles.navSection}>{getNavLeftSection}</div>
-      <div className={styles.navSection}>{renderNavRightSection}</div>
+      <div className={styles.navSection}>
+        {renderNavRightSection}
+        <ShoppingCart className={styles.cartIcon} />
+      </div>
     </div>
   );
 };

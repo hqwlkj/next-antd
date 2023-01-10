@@ -1,0 +1,50 @@
+.mobileHeaderWarp {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--pietra-yellow);
+  border: 2px solid #000;
+  padding: 1rem;
+  z-index: 4;
+
+  > .navToolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    > .navToolbarSection {
+      display: flex;
+      align-items: center;
+      width: calc(100% / 3);
+
+      &:nth-child(1) {
+        justify-content: flex-start;
+      }
+
+      &:nth-child(2) {
+        justify-content: center;
+      }
+
+      &:nth-child(3) {
+        justify-content: flex-end;
+      }
+
+      > .logo {
+        > .pietra {
+          width: 80px;
+          height: auto;
+        }
+      }
+
+      > .searchIcon {
+        transform: translateX(5px);
+        margin-left: 16px;
+      }
+
+      > .cartIcon {
+        transform: translateY(2px);
+      }
+    }
+  }
+}

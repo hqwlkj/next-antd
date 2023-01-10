@@ -1,0 +1,48 @@
+.navHamburgerWarp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+  width: 23px;
+  height: 35px;
+
+  .hamburgerLine {
+    display: block;
+    width: 23px;
+    height: 2px;
+    margin-bottom: 3px;
+    position: relative;
+    background: #000;
+    border-radius: 1px;
+    transition: all 0.3s ease-in-out;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &.showClose {
+    .hamburgerLine {
+      position: absolute;
+
+      &:nth-child(1) {
+        transform: rotate(45deg) translate(1px, 1px);
+      }
+
+      &:nth-child(2) {
+        display: none;
+      }
+
+      &:nth-child(3) {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}
+
+.leftMenuDrawerWarp {
+}
