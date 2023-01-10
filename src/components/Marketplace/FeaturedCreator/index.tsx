@@ -1,5 +1,5 @@
 import React from 'react';
-import { FeaturedCreatorType } from '@/types/marketplace';
+import { FeaturedCreatorType } from '@/types/marketplace.interface';
 import { EventSource } from '@/shared/event-types';
 import styles from './index.module.less';
 import Link from 'next/link';
