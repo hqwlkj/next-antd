@@ -1,24 +1,3 @@
-export interface DesignerPortfolio {
-  uid: string;
-  xhr: {
-    uid: string;
-  };
-  name: string;
-  size: number;
-  type: string;
-  status: string;
-  percent: number;
-  response: {
-    url: string;
-    originalUrl: string;
-  };
-  lastModified: number;
-  originFileObj: {
-    uid: string;
-  };
-  lastModifiedDate: string;
-}
-
 export interface FeaturedCreatorType {
   category?: string;
   description?: string;
@@ -79,15 +58,9 @@ export interface FeaturedComingSoonType {
   imageUrl: string;
 }
 
-export interface PopularDataType {
-  jewelryList: any[];
-  storeList: any[];
-}
-
 export type CreatorItemType = FeaturedCreatorType | FeaturedComingSoonType;
 export type ProductsDataApiType = FeaturedCreatorProductApiType | NewestFeaturedProductApiType;
 export type ProductsDataReturnType = FeaturedCreatorProductType | NewestFeaturedProductType;
-export type MobileFeaturedCreatorData = [FeaturedCreatorType, FeaturedCreatorType];
 
 export interface TrendingHeroImageType {
   imageUrl: string;
@@ -105,24 +78,6 @@ export interface TrendingHeroVideoType {
   instagram: string;
   storeHandle: string;
   fullName: string;
-}
-
-export type TrendingHeroContentType = TrendingHeroImageType | TrendingHeroVideoType;
-
-export interface TrendingDataType {
-  title: string;
-  description: string;
-  heroContent: TrendingHeroContentType[];
-  products?: CreatorItemType[];
-  creators: ProductsDataApiType[];
-}
-
-export interface MarketplaceNavItem {
-  text: string;
-  path: string;
-  icon?: { left: string; right: string };
-  dropdownItems?: MarketplaceNavItem[];
-  onClick?: (item: MarketplaceNavItem) => void;
 }
 
 export interface LineItem {
@@ -249,70 +204,15 @@ export interface CartItem {
   };
 }
 
-export interface CartInfo {
-  cartItems: Array<{
-    handle: string;
-    avatarUrl: string;
-    id: number;
-    title: string;
-    items: CartItem[];
-  }>;
-}
-
-export interface CheckoutInfo {
-  lineItems: LineItem[];
-  remoteCheckoutId: string;
-  remoteCheckoutUrl: string;
-}
-
-export interface SearchParam {
-  sorts?: string | string[];
-  category?: string;
-  text?: string;
-  minPriceRanges?: string;
-  page?: number;
-  predefinedText?: string;
-  storeId?: string;
-  isFetchStoreList?: boolean;
-  isFetchPopularData?: boolean;
-}
-
-export interface DesignerProfileQuestion {
-  question: string;
-  answer: string;
-}
-
-export enum ExternalFieldName {
-  SEEN_PRODUCT_TOUR = 'seenProductTour',
-  STORE_PROFILE_QUESTIONS = 'storeProfileQuestions',
-}
-
 export interface Tag {
   value: string;
   color: string;
-}
-
-export enum PdpProductMeta {
-  FEW = 'FEW',
-  LIMITED = 'LIMITED',
-  BRAND_SHIPPING = 'BRAND_SHIPPING',
-}
-
-export interface Breadcrumb {
-  text: string;
-  path: string;
 }
 
 export interface SearchTerm {
   categories: string[];
   storeIds: number[];
   text: string;
-}
-
-export interface TextPlaceholderLine {
-  height: string;
-  width: string;
-  color: string;
 }
 
 export interface SuggestionsCategories {

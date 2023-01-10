@@ -1,5 +1,5 @@
 import React from 'react';
-import { FeaturedCreatorProductType } from '@/types/marketplace';
+import { FeaturedCreatorProductType } from '@/types/marketplace.interface';
 import styles from './index.module.less';
 import classNames from 'classnames';
 import { zeroPaddedNumber } from '@/shared/utils';
@@ -25,6 +25,8 @@ const PopularProducts = ({
   const onPopularItemClick = (productId: number) => {
     // TODO
   };
+
+  console.log(products);
 
   return (
     <div className={classNames(styles.popularProductsContainer, vertical ? styles.vertical : '')}>
