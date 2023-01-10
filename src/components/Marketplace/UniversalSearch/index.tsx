@@ -1,10 +1,10 @@
 import { SearchOutlined } from '@ant-design/icons';
-import React, { FormEvent, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './index.module.less';
 import { getJewelrySearchSuggestions } from '@/lib/service';
 import _ from 'lodash';
 import { getSubcategoryValueToTextMap } from '@/shared/subcategory-helper';
-import { SearchSuggestions } from '@/types/marketplace';
+import { SearchSuggestions } from '@/types/marketplace.interface';
 import { convertSuggestions, imageTransform, shopAllLink } from '@/shared/utils';
 import Link from 'next/link';
 import classNames from 'classnames';
