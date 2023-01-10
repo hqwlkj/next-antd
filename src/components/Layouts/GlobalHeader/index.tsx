@@ -1,11 +1,10 @@
-import { RetroTitle } from '@/components';
 import Image from 'next/image';
 import Link from 'next/link';
 import classNames from 'classnames';
 import { useMemo } from 'react';
-import type { MarketplaceNavItem } from '@/components/NavItem';
 import styles from './index.module.less';
-import NavItem from '@/components/NavItem';
+import RetroTitle from '@/components/Common/RetroTitle';
+import NavItem, { MarketplaceNavItem } from '@/components/Layouts/NavItem';
 
 interface GlobalHeaderProps {
   isShopPage?: boolean;

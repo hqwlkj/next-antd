@@ -1,7 +1,8 @@
 import React from 'react';
-import { GlobalFooter, GlobalHeader } from '@/components';
 import styles from './index.module.less';
 import { useRouter } from 'next/router';
+import GlobalHeader from '@/components/Layouts/GlobalHeader';
+import GlobalFooter from '@/components/Layouts/GlobalFooter';
 
 interface LayoutProps {
   /**

@@ -1,5 +1,5 @@
 import React from 'react';
-import { RetroTitle } from '@/components';
+import RetroTitle from '@/components/Common/RetroTitle';
 
 const CatchPhrase = ({ fontSize }: { fontSize: number }) => {
   return (
