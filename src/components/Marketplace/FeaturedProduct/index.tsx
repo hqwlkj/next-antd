@@ -1,5 +1,8 @@
 import React from 'react';
-import { FeaturedCreatorProductType, NewestFeaturedProductType } from '@/types/marketplace';
+import {
+  FeaturedCreatorProductType,
+  NewestFeaturedProductType,
+} from '@/types/marketplace.interface';
 import { EventSource } from '@/shared/event-types';
 import Link from 'next/link';
 import styles from './index.module.less';

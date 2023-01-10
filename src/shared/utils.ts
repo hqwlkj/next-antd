@@ -1,6 +1,9 @@
 import { IxParams } from '@/shared/typings';
-import { IncomingMessage } from 'http';
-import { SearchSuggestions, SuggestionsCategories, SuggestionsData } from '@/types/marketplace';
+import {
+  SearchSuggestions,
+  SuggestionsCategories,
+  SuggestionsData,
+} from '@/types/marketplace.interface';
 
 export const isS3Image = (url: string) => {
   return url?.includes('static.pietrastudio.com') ?? false;

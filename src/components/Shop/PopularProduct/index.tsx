@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './index.module.less';
 import Link from 'next/link';
 import FeaturedProduct from '@/components/Marketplace/FeaturedProduct';
-import { FeaturedCreatorProductType } from '@/types/marketplace';
+import { FeaturedCreatorProductType } from '@/types/marketplace.interface';
 import { formatPrice } from '@/shared/utils';
 const PopularProduct = ({
   product,

@@ -1,4 +1,4 @@
-import { Tag } from '@/types/marketplace';
+import { Tag } from '@/types/marketplace.interface';
 
 export const TAGS: Tag[] = [
   { value: 'Sustainable', color: '#D7FADB' },

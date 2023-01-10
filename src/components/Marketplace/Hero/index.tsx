@@ -5,7 +5,7 @@ import styles from './index.module.less';
 import classNames from 'classnames';
 import UniversalSearch from '@/components/Marketplace/UniversalSearch';
 import useBusinessSettingsDisplay from '@/lib/hooks/common/useBusinessSettingsDisplay';
-import { SearchTerm } from '@/types/marketplace';
+import { SearchTerm } from '@/types/marketplace.interface';
 import { createShopAllQueryString } from '@/shared/marketplace';
 import Link from 'next/link';
 import { Skeleton } from 'antd';
