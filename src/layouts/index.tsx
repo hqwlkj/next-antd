@@ -31,10 +31,11 @@ const Layout = ({ children, head }: LayoutProps) => {
       {head}
       <header className={styles.header}>
         <GlobalHeader
+          isMobile={isMobile}
           isMarketplaceHome={pathname === '/'}
           navItems={[
             {
-              text: `Shop All ${isMobile}`,
+              text: 'Shop All',
               path: '/shop/all',
             },
             {

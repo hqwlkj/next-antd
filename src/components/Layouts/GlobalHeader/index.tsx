@@ -10,6 +10,7 @@ interface GlobalHeaderProps {
   isShopPage?: boolean;
   isMarketplaceHome?: boolean;
   navItems?: MarketplaceNavItem[];
+  isMobile?: boolean;
 }
 const GlobalHeader = ({ navItems, isShopPage, isMarketplaceHome }: GlobalHeaderProps) => {
   const getNavLeftSection = useMemo(() => {

@@ -19,7 +19,7 @@ const Provider = ({ children }: any) => {
 
   const handleIsMobile = (size: SizeInfo) => {
     setScreenSize(size);
-    setIsMobile(size.width < 601);
+    setIsMobile(size.width < 750);
   };
 
   const exposed = {
