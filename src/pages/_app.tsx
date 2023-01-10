@@ -7,8 +7,9 @@ import '@/styles/mixins.less';
 import '@/styles/globals.less';
 import '@/styles/fonts.css';
 import 'nprogress/nprogress.css';
-import { ConfigProvider } from 'antd';
+import { ConfigProvider as AntdConfigProvider } from 'antd';
 import { createCache, StyleProvider } from '@ant-design/cssinjs';
+import ConfigProvider from '@/context/ConfigProvider';
 
 Router.events.on('routeChangeStart', NProgress.start);
 Router.events.on('routeChangeError', NProgress.done);
@@ -29,11 +30,11 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   // SSR Render
   const cache = createCache();
 
-  return getLayout(
-    <ConfigProvider>
+  return (
+    <AntdConfigProvider>
       <StyleProvider cache={cache}>
-        <Component {...pageProps} />
+        <ConfigProvider>{getLayout(<Component {...pageProps} />)}</ConfigProvider>
       </StyleProvider>
-    </ConfigProvider>,
+    </AntdConfigProvider>
   );
 }

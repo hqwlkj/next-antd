@@ -3,6 +3,7 @@ import styles from './index.module.less';
 import { useRouter } from 'next/router';
 import GlobalHeader from '@/components/Layouts/GlobalHeader';
 import GlobalFooter from '@/components/Layouts/GlobalFooter';
+import { useConfigProvider } from '@/context/ConfigProvider';
 
 interface LayoutProps {
   /**
@@ -23,6 +24,7 @@ interface LayoutProps {
 // }
 const Layout = ({ children, head }: LayoutProps) => {
   const { pathname } = useRouter();
+  const { menus, isMobile } = useConfigProvider();
 
   return (
     <div className={styles.layout}>
@@ -32,21 +34,12 @@ const Layout = ({ children, head }: LayoutProps) => {
           isMarketplaceHome={pathname === '/'}
           navItems={[
             {
-              text: 'Shop All',
+              text: `Shop All ${isMobile}`,
               path: '/shop/all',
             },
             {
               text: 'Discover',
-              dropdownItems: [
-                {
-                  text: 'Shop All',
-                  path: '/shop/all',
-                },
-                {
-                  text: 'Shop All',
-                  path: '/shop/all',
-                },
-              ],
+              dropdownItems: menus || [],
             },
             {
               text: 'Sell on Pietra',

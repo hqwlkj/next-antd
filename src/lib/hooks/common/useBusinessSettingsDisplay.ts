@@ -1,11 +1,11 @@
 import axios from '@/shared/axios';
 import { useAsync } from 'react-use';
 
-const useBusinessSettingsDisplay = (key: string) => {
+function useBusinessSettingsDisplay<T = any>(key: string) {
   return useAsync(async () => {
-    const res = await axios.get<any>(`/commons/business-settings/DISPLAY/${key}`);
-    return res.data;
+    const { data } = await axios.get<T>(`/commons/business-settings/DISPLAY/${key}`);
+    return data;
   });
-};
+}
 
 export default useBusinessSettingsDisplay;

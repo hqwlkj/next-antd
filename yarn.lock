@@ -3480,7 +3480,7 @@ rc-rate@~2.9.0:
     classnames "^2.2.5"
     rc-util "^5.0.1"
 
-rc-resize-observer@^1.0.0, rc-resize-observer@^1.1.0, rc-resize-observer@^1.2.0:
+rc-resize-observer@^1.0.0, rc-resize-observer@^1.1.0, rc-resize-observer@^1.2.0, rc-resize-observer@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/rc-resize-observer/-/rc-resize-observer-1.2.1.tgz#7f9715b5d1afe126ade3c107aafd2cebf8a57a99"
   integrity sha512-g53PnWLeVOmt4XWkt2x+QlIdf/PhJSd7JqHhtMrUY370e7wJ+kxbgXicYqvENUcgFiiOiMCd07YsC2GNsoSbnA==
