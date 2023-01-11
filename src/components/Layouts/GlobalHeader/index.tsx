@@ -66,7 +66,7 @@ const GlobalHeader = ({ navItems, isShopPage, isMarketplaceHome, isMobile }: Glo
           [
             {
               text: 'Home',
-              path: '/marketplace',
+              path: '/',
             },
           ],
         );
