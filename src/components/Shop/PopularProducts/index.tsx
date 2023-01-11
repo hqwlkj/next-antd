@@ -4,23 +4,19 @@ import styles from './index.module.less';
 import classNames from 'classnames';
 import { zeroPaddedNumber } from '@/shared/utils';
 import PopularProduct from '@/components/Shop/PopularProduct';
+import { useConfigProvider } from '@/context/ConfigProvider';
+import { Carousel } from 'antd';
 
 const PopularProducts = ({
   products,
   vertical,
   numbered,
-  isMobile,
 }: {
   products: FeaturedCreatorProductType[];
   vertical: boolean;
   numbered: boolean;
-  isMobile: boolean;
 }) => {
-  const productInfoLines = [
-    { width: '100%', height: '30px', color: '#e8e8e8' },
-    { width: '90%', height: '10px', color: '#e8e8e8' },
-    { width: '50%', height: '10px', color: '#e8e8e8' },
-  ];
+  const { isMobile } = useConfigProvider();
 
   const onPopularItemClick = (productId: number) => {
     // TODO
@@ -32,7 +28,7 @@ const PopularProducts = ({
         <span className={styles.title}>Popular Products </span>
         <img className={styles.star} src="/images/star.png" alt="star" title="star" />
       </div>
-      {vertical && !isMobile && (
+      {vertical && !isMobile ? (
         <div className={styles.popularProducts}>
           {products.length > 0 && (
             <>
@@ -41,11 +37,21 @@ const PopularProducts = ({
                   {numbered && (
                     <span className={styles.productNumber}>{zeroPaddedNumber(i + 1)}</span>
                   )}
-                  <PopularProduct product={product} isMobile={isMobile} />
+                  <PopularProduct product={product} />
                 </div>
               ))}
             </>
           )}
+        </div>
+      ) : (
+        <div className={styles.popularProducts}>
+          <Carousel autoplay>
+            {products.map((product, i) => (
+              <div className={styles.slide} key={i}>
+                <PopularProduct product={product} />
+              </div>
+            ))}
+          </Carousel>
         </div>
       )}
     </div>

@@ -3,6 +3,7 @@ import styles from './index.module.less';
 import Link from 'next/link';
 import { imageTransform } from '@/shared/utils';
 import classNames from 'classnames';
+import { useConfigProvider } from '@/context/ConfigProvider';
 
 interface Props {
   avatarUrl: string;
@@ -10,10 +11,10 @@ interface Props {
   direction?: string;
   text: string;
   storeId: number;
-  isMobile: boolean;
 }
 
-const TooltipAvatar = ({ avatarUrl, goToUrl, storeId, direction, text, isMobile }: Props) => {
+const TooltipAvatar = ({ avatarUrl, goToUrl, storeId, direction, text }: Props) => {
+  const { isMobile } = useConfigProvider();
   const logClick = () => {
     // TODO
     // this.$api.loggingService.logCommonView(EventSource.PRODUCT_GRID_ITEM_SHOP_AVATAR, this.storeId, this.$gtm)

@@ -15,15 +15,6 @@
       flex-direction: row;
       justify-content: flex-end;
 
-      > .heroImagePlaceholder {
-        .border-radius('small') {
-        }
-
-        width: 100%;
-        height: 250px;
-        background: #f4f4f5;
-      }
-
       > .heroImageLink {
         > .heroImage {
           width: 100%;
@@ -82,6 +73,37 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+
+      &.mobile {
+        > .heroButton {
+          width: 50vw;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: transform 300ms ease;
+          border: 1px solid #000;
+          padding: 5px 10px;
+          font-family: Attila-Semibold;
+          font-size: 12px;
+          background: #fff;
+          color: #000;
+          margin: 1rem auto 0;
+
+          > span,
+          > .anticon {
+            margin-top: 2px;
+          }
+        }
+
+        > .heroImageLink {
+          margin-top: 2rem;
+
+          > .heroImage {
+            width: 80%;
+            height: auto;
+          }
+        }
+      }
     }
 
     .mobile {
@@ -113,6 +135,20 @@
       align-items: center;
       text-align: center;
       width: 100%;
+
+      &:last-child {
+        align-items: center;
+      }
+
+      &.heroImageSection {
+        justify-content: center;
+
+        > .heroImageLink {
+          > .heroImage {
+            width: 400px;
+          }
+        }
+      }
 
       > .heroTitle {
         font-size: 35px;
@@ -151,6 +187,14 @@
     padding: 5rem 3rem;
 
     > .heroSection {
+      &.heroImageSection {
+        > .heroImageLink {
+          > .heroImage {
+            width: 450px;
+          }
+        }
+      }
+
       > .heroTitle {
         font-size: 40px;
       }
@@ -181,6 +225,14 @@
       align-items: flex-start;
       text-align: left;
 
+      &.heroImageSection {
+        > .heroImageLink {
+          > .heroImage {
+            width: 400px;
+          }
+        }
+      }
+
       > .heroTitle {
         font-size: 40px;
       }
@@ -199,6 +251,14 @@
 @media (min-width: 1300px) {
   .marketplaceHero {
     > .heroSection {
+      &.heroImageSection {
+        > .heroImageLink {
+          > .heroImage {
+            width: 450px;
+          }
+        }
+      }
+
       > .heroTitle {
         font-size: 45px;
       }
@@ -215,6 +275,16 @@
     grid-template-columns: 60% 40%;
 
     > .heroSection {
+      &.heroImageSection {
+        justify-content: flex-end;
+
+        > .heroImageLink {
+          > .heroImage {
+            width: 500px;
+          }
+        }
+      }
+
       > .heroTitle {
         font-size: 50px;
       }

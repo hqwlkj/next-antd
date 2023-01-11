@@ -10,7 +10,7 @@ import _ from 'lodash';
 import { getAllJewelry } from '@/lib/service';
 import { formatProducts, groupById } from '@/shared/marketplace';
 
-const Home = ({ isMobile }: { isMobile: boolean }) => {
+const Home = () => {
   const [featuredCreatorProducts, setFeaturedCreatorProducts] = useState<
     FeaturedCreatorProductType[]
   >([]);
@@ -37,26 +37,20 @@ const Home = ({ isMobile }: { isMobile: boolean }) => {
 
   return (
     <div className={styles.marketplace}>
-      <Hero isMobile={isMobile} />
+      <Hero />
 
       <div className={styles.marketplaceBody}>
         <div className={styles.featuredCreatorsContainer}>
           {featuredCreators.map((creator: FeaturedCreatorType, i: number) => (
             <FeaturedCreator
               key={`featured-creator-${i}`}
-              isMobile={isMobile}
               creator={creator}
               originEventName={EventSource.MARKETPLACE_HOMEPAGE_CONTENT}
             />
           ))}
         </div>
         <div className={styles.featuredProductsContainer}>
-          <PopularProducts
-            products={featuredCreatorProducts}
-            numbered={true}
-            vertical={true}
-            isMobile={isMobile}
-          />
+          <PopularProducts products={featuredCreatorProducts} numbered={true} vertical={true} />
         </div>
       </div>
     </div>
