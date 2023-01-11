@@ -10,20 +10,19 @@ import classNames from 'classnames';
 import TooltipAvatar from '@/components/Common/TooltipAvatar';
 import { imageTransform } from '@/shared/utils';
 import { useRouter } from 'next/router';
+import { useConfigProvider } from '@/context/ConfigProvider';
 interface Props {
   item: NewestFeaturedProductType | FeaturedCreatorProductType;
   showInfo: boolean;
   showAvatar: boolean;
   customStyle?: Record<string, string | number>;
   originEventName?: EventSource;
-  isMobile: boolean;
 }
 const FeaturedProduct = ({
   item,
   showInfo,
   showAvatar,
   originEventName,
-  isMobile,
   customStyle,
 }: Props) => {
   const router = useRouter();
@@ -32,6 +31,9 @@ const FeaturedProduct = ({
       parseFloat(price),
     );
   };
+const FeaturedProduct = ({ item, showInfo, showAvatar, originEventName, customStyle }: Props) => {
+  const { isMobile } = useConfigProvider();
+
   const logClick = () => {
     // TODO
     // this.$api.loggingService.logCommonView(this.originEventName, this.item.productId, this.$gtm)
@@ -53,7 +55,6 @@ const FeaturedProduct = ({
           goToUrl={`/designers/${item.storeHandle}`}
           text={'View Brand'}
           storeId={item.storeId}
-          isMobile={isMobile}
         />
       )}
       <div className={styles.imageContainer}>

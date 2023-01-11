@@ -7,16 +7,17 @@ import { imgix } from '@/shared/utils';
 import { getTagColor } from '@/shared/marketplace';
 import _ from 'lodash';
 import { Skeleton } from 'antd';
+import { useConfigProvider } from '@/context/ConfigProvider';
 
 const FeaturedCreator = ({
   creator,
   originEventName,
-  isMobile,
 }: {
   creator: FeaturedCreatorType;
   originEventName: EventSource;
-  isMobile: boolean;
 }) => {
+  const { isMobile } = useConfigProvider();
+
   const logClick = () => {
     // TODO
   };

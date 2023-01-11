@@ -10,11 +10,14 @@ import { createShopAllQueryString } from '@/shared/marketplace';
 import Link from 'next/link';
 import { Skeleton } from 'antd';
 import { imageTransform } from '@/shared/utils';
+import { useConfigProvider } from '@/context/ConfigProvider';
+import { RightOutlined } from '@ant-design/icons';
 
-const Hero = ({ isMobile }: { isMobile: boolean }) => {
+const Hero = () => {
   const { value: heroValue } = useBusinessSettingsDisplay('MARKETPLACE');
   const { value: termsValue } = useBusinessSettingsDisplay('MARKETPLACE_SEARCH_TERMS');
   const heroData = heroValue?.value;
+  const { isMobile } = useConfigProvider();
 
   const formatSearchTerms = (searchTerms: SearchTerm[]) => {
     return searchTerms.map((term) => {
@@ -52,10 +55,28 @@ const Hero = ({ isMobile }: { isMobile: boolean }) => {
     // )
   };
 
-  const mobileSection = (
+  const mobileSection = heroData ? (
     <div className={classNames(styles.heroSection, styles.mobile)}>
       <CatchPhrase fontSize={retroFontSize()} />
+      <Link
+        href={heroData.imageLinkPath}
+        className={styles.heroImageLink}
+        onClick={() => logItemClick('')}
+      >
+        <img
+          src={imageTransform(heroData.image, 'large')}
+          className={styles.heroImage}
+          alt="Pietra Creator Marketplace"
+          title="Pietra Creator Marketplace"
+        />
+      </Link>
+      <Link href={heroData.imageLinkPath} className={classNames('button', styles.heroButton)}>
+        <span>{heroData.linkButtonText}</span>
+        <RightOutlined />
+      </Link>
     </div>
+  ) : (
+    <Skeleton active />
   );
 
   const desktopSection = heroData ? (

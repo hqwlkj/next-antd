@@ -4,13 +4,7 @@ import Link from 'next/link';
 import FeaturedProduct from '@/components/Marketplace/FeaturedProduct';
 import { FeaturedCreatorProductType } from '@/types/marketplace.interface';
 import { formatPrice } from '@/shared/utils';
-const PopularProduct = ({
-  product,
-  isMobile,
-}: {
-  product: FeaturedCreatorProductType;
-  isMobile: boolean;
-}) => {
+const PopularProduct = ({ product }: { product: FeaturedCreatorProductType }) => {
   const handleClick = (productId: number) => {
     // TODO
     // const content = `productId: ${productId}, storeId: ${this.product.storeId}, originPath: ${this.$route.path}, destinationPath: /shop/${productId}, section: Popular Products`
@@ -20,7 +14,7 @@ const PopularProduct = ({
   return (
     <div className={styles.popularProduct} onClick={() => handleClick(product.productId)}>
       <Link href={`/shop/${product.productId}`} className={styles.popularProductImage}>
-        <FeaturedProduct item={product} showInfo={false} showAvatar={false} isMobile={isMobile} />
+        <FeaturedProduct item={product} showInfo={false} showAvatar={false} />
       </Link>
       <div className={styles.information}>
         <Link href={`/shop/${product.productId}`} className={styles.productName}>
