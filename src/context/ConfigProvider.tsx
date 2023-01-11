@@ -1,8 +1,9 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useCallback, useContext, useState } from 'react';
 import ResizeObserver from 'rc-resize-observer';
 import type { SizeInfo } from 'rc-resize-observer';
 import useBusinessSettingsDisplay from '@/lib/hooks/common/useBusinessSettingsDisplay';
 import { useRouter } from 'next/router';
+import { createShopAllQueryString } from '@/shared/marketplace';
 
 type ProviderType = {
   isMobile?: boolean;
@@ -17,15 +18,22 @@ const Provider = ({ children }: any) => {
   const router = useRouter();
   const { value: menuRes } = useBusinessSettingsDisplay('CATEGORY_NAV_DROPDOWN_ITEMS');
 
-  const menuList = menuRes?.value || [];
-
   const handleIsMobile = (size: SizeInfo) => {
     setScreenSize(size);
     setIsMobile(size.width < 750);
   };
 
+  const formattedCategoryNavDropdownItems = useCallback(() => {
+    return (menuRes?.value || []).map((term: any) => {
+      return {
+        text: term.text,
+        path: createShopAllQueryString(term.categories.join(','), term.storeIds),
+      };
+    });
+  }, [menuRes?.value]);
+
   const exposed = {
-    menus: menuList,
+    menus: formattedCategoryNavDropdownItems(),
     isShopPage: router.pathname.startsWith('/shop'),
     isMobile,
     screenSize,

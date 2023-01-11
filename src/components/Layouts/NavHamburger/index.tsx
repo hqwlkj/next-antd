@@ -1,10 +1,11 @@
-import { Button, Drawer } from 'antd';
+import { Drawer } from 'antd';
 import { useToggle } from 'react-use';
 import classNames from 'classnames';
 import { useConfigProvider } from '@/context/ConfigProvider';
 import styles from './index.module.less';
+import type { ReactNode } from 'react';
 
-const NavHamburger = () => {
+const NavHamburger = ({ children }: { children?: ReactNode[] }) => {
   const { isMobile } = useConfigProvider();
   const [open, toggle] = useToggle(false);
 
@@ -19,50 +20,17 @@ const NavHamburger = () => {
         <span key={`burger-${index}`} className={styles.hamburgerLine} />
       ))}
       <Drawer
-        title={null}
-        closable={false}
+        title={'Explore Pietra'}
+        closable
         width={isMobile ? '100%' : 400}
         placement="left"
         onClose={toggle}
+        maskClosable={false}
         open={open}
         rootClassName={styles.leftMenuDrawerWarp}
         key={'left-menu-drawer'}
       >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+        <div className={styles.mobileNavMenuWarp}>{children}</div>
       </Drawer>
     </div>
   );

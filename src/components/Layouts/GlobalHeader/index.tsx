@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import classNames from 'classnames';
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import styles from './index.module.less';
 import RetroTitle from '@/components/Common/RetroTitle';
 import type { MarketplaceNavItem } from '@/components/Layouts';
@@ -56,11 +56,40 @@ const GlobalHeader = ({ navItems, isShopPage, isMarketplaceHome, isMobile }: Glo
     }
   }, [isMarketplaceHome]);
 
+  const formatMenuData = useCallback(
+    (navItems?: MarketplaceNavItem[]): MarketplaceNavItem[] => {
+      if (isMobile) {
+        return navItems?.reduce(
+          (acc: MarketplaceNavItem[], cur: MarketplaceNavItem) => {
+            return cur?.dropdownItems ? [...acc, ...cur?.dropdownItems] : [...acc, cur];
+          },
+          [
+            {
+              text: 'Home',
+              path: '/marketplace',
+            },
+          ],
+        );
+      }
+      return navItems;
+    },
+    [isMobile],
+  );
+
   const renderNavRightSection = useMemo(() => {
-    return navItems?.map((item, index) => <NavItem item={item} key={index} />);
-  }, [navItems]);
+    return formatMenuData(navItems)?.map((item, index) => (
+      <NavItem
+        item={item}
+        key={index}
+        className={classNames('', {
+          'mobile-left-menu-item': isMobile,
+        })}
+      />
+    ));
+  }, [formatMenuData, isMobile, navItems]);
+
   if (isMobile) {
-    return <MobileHeader />;
+    return <MobileHeader>{renderNavRightSection}</MobileHeader>;
   }
   return (
     <div

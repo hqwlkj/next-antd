@@ -1,13 +1,14 @@
+import type { ReactNode } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ShoppingCart, NavHamburger, NavMobileSearch } from '@/components/Layouts';
 import styles from './index.module.less';
-const MobileHeader = () => {
+const MobileHeader = ({ children }: { children?: ReactNode[] }) => {
   return (
     <div className={styles.mobileHeaderWarp}>
       <div className={styles.navToolbar}>
         <div className={styles.navToolbarSection}>
-          <NavHamburger />
+          <NavHamburger>{children}</NavHamburger>
           <NavMobileSearch className={styles.searchIcon} />
         </div>
         <div className={styles.navToolbarSection}>

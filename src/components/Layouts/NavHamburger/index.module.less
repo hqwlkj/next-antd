@@ -45,4 +45,70 @@
 }
 
 .leftMenuDrawerWarp {
+  :global {
+    .ant-drawer-content {
+      background: var(--pietra-yellow);
+
+      .ant-drawer-header {
+        border-bottom: none;
+        padding: 120px 2rem 30px;
+
+        .ant-drawer-title {
+          text-align: center;
+          font-size: 22px;
+          color: #141414;
+          font-family: 'Attila-Semibold';
+        }
+
+        .ant-drawer-close {
+          margin-inline-end: 0;
+        }
+
+        .anticon-close {
+          font-size: 22px;
+          color: #141414;
+        }
+      }
+
+      .ant-drawer-body {
+        padding: 0;
+
+        :global {
+          .mobile-left-menu-item {
+            flex: 1;
+            padding: 0;
+            margin-bottom: 30px;
+            width: 60%;
+
+            > span {
+              width: 100%;
+              font-family: Labil-Regular;
+              font-size: 15px;
+            }
+
+            &:last-child {
+              position: relative;
+              margin-top: 30px;
+              &:before {
+                content: '';
+                position: absolute;
+                border-top: 1px solid #000000;
+                transform: scaleY(0.5);
+                left: 0;
+                top: -30px;
+                right: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .mobileNavMenuWarp {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: auto;
+  }
 }
