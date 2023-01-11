@@ -9,6 +9,7 @@ import styles from './index.module.less';
 import classNames from 'classnames';
 import TooltipAvatar from '@/components/Common/TooltipAvatar';
 import { imageTransform } from '@/shared/utils';
+import { useRouter } from 'next/router';
 interface Props {
   item: NewestFeaturedProductType | FeaturedCreatorProductType;
   showInfo: boolean;
@@ -25,6 +26,7 @@ const FeaturedProduct = ({
   isMobile,
   customStyle,
 }: Props) => {
+  const router = useRouter();
   const formatPrice = (price: string): string => {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(
       parseFloat(price),
@@ -40,11 +42,10 @@ const FeaturedProduct = ({
   const isSoldOut = item?.availableForSale;
 
   return (
-    <Link
-      href={`/shop/${item.productId}`}
+    <div
+      onClick={() => router.push(`/shop/${item.productId}`)}
       className={classNames(styles.item, showInfo ? styles.showInfo : '')}
       style={customStyle}
-      onClick={logClick}
     >
       {showAvatar && item.avatarUrl && (
         <TooltipAvatar
@@ -83,7 +84,7 @@ const FeaturedProduct = ({
           {isSoldOut && <span className={styles.soldOutTag}>Sold Out</span>}
         </div>
       )}
-    </Link>
+    </div>
   );
 };
 
