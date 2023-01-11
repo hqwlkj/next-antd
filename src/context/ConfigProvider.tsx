@@ -20,7 +20,7 @@ const Provider = ({ children }: any) => {
 
   const handleIsMobile = (size: SizeInfo) => {
     setScreenSize(size);
-    setIsMobile(size.width < 750);
+    setIsMobile(size.width < 900);
   };
 
   const formattedCategoryNavDropdownItems = useCallback(() => {

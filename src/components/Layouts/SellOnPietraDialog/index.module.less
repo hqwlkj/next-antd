@@ -1,0 +1,136 @@
+.sellOnPietraDialogWarp {
+  border-radius: 10px;
+
+  :global {
+    .ant-modal-content {
+      border: 2px solid #ff401a;
+      height: 90vh;
+      background: #fff;
+      padding: 3.5rem 2.5rem;
+      box-shadow: none;
+      overflow-y: auto;
+
+      .ant-modal-header {
+        text-align: center;
+        margin: 1rem 0;
+        padding-block-end: 1rem;
+
+        .ant-modal-title {
+          font-size: 36px;
+          line-height: 100%;
+          font-family: 'Attila-Semibold';
+        }
+      }
+
+      .ant-input {
+        border-radius: 0;
+        border-color: #141414;
+      }
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
+  .text {
+    text-align: center;
+    margin: 1rem 0;
+    font-size: 13px;
+    font-family: 'Labil-Regular';
+  }
+
+  .roundedBorder {
+    border: 1px solid var(--pietra-spark);
+    border-radius: 50px;
+    padding: 1rem 1.5rem;
+    margin: 2.5rem auto;
+    background: #fff;
+    color: var(--pietra-spark);
+    font-family: 'Labil-Bold';
+    font-size: 13px;
+    width: 280px;
+    text-align: center;
+  }
+  .signupStepsWarp {
+    padding: 1rem 1.5rem;
+    :global {
+      .ant-list {
+        .ant-list-item {
+          padding: 0;
+          margin-bottom: 1.5rem;
+          border-block-end: none;
+          .ant-list-item-meta {
+            .anticon-check-circle {
+              font-size: 26px;
+              color: var(--pietra-spark);
+              margin-block-start: 5px;
+            }
+            .ant-list-item-meta-title {
+              font-family: Labil-Bold;
+              font-size: 16px;
+            }
+            .ant-list-item-meta-description {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .formContent {
+    padding: 0 1.5rem;
+    .formSubmitBtnWarp {
+      margin: 3rem auto;
+      text-align: center;
+      .submitBtn {
+        background: #000;
+        color: #fff;
+        font-size: 20px;
+        font-family: Labil-Bold;
+        vertical-align: middle;
+        min-width: 200px;
+        border-radius: 0;
+        padding: 1rem 3rem;
+        height: auto;
+
+        &:hover {
+          opacity: 0.85;
+        }
+      }
+    }
+  }
+
+  &.mobileWarp {
+    :global {
+      .ant-modal-content {
+        padding: 1rem;
+        .ant-modal-header {
+          .ant-modal-title {
+            font-size: 26px;
+          }
+        }
+      }
+    }
+    .roundedBorder {
+      padding: 0.5rem 1rem;
+      margin: 1rem auto;
+      font-size: 12px;
+      width: 260px;
+    }
+    .signupStepsWarp {
+      padding: 1rem 0;
+    }
+    .formContent {
+      padding: 0 0;
+      .formSubmitBtnWarp {
+        margin: 1rem auto;
+        .submitBtn {
+          padding: 0.5rem 2rem;
+          font-size: 16px;
+          min-width: 100px;
+        }
+      }
+    }
+  }
+}

@@ -4,6 +4,8 @@ import { useRouter } from 'next/router';
 import { GlobalHeader, GlobalFooter } from '@/components/Layouts';
 import { useConfigProvider } from '@/context/ConfigProvider';
 import classNames from 'classnames';
+import SellOnPietraDialog from '../components/Layouts/SellOnPietraDialog';
+import { useToggle } from 'react-use';
 
 interface LayoutProps {
   /**
@@ -25,6 +27,7 @@ interface LayoutProps {
 const Layout = ({ children, head }: LayoutProps) => {
   const { pathname } = useRouter();
   const { menus, isMobile, isShopPage } = useConfigProvider();
+  const [open, toggle] = useToggle(false);
 
   return (
     <div className={styles.layout}>
@@ -46,11 +49,12 @@ const Layout = ({ children, head }: LayoutProps) => {
             {
               text: 'Sell on Pietra',
               onClick: () => {
-                alert('Sell on Pietra');
+                toggle();
               },
             },
           ]}
         />
+        <SellOnPietraDialog isMobile={isMobile} isModalOpen={open} onCancel={toggle} />
       </header>
       <main
         className={classNames(styles.main, {

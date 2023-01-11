@@ -46,7 +46,6 @@ const RetroTitle = ({ text, textColor, fontSize }: RetroTitleProps) => {
       fontSize: `${fontSize}px`,
       textShadow: textShadow(),
       textStroke: textStroke(),
-      webkitTextStroke: textStroke(),
     };
   }, [fontSize, textColor]);
   return (
