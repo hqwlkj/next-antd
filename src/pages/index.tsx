@@ -20,7 +20,7 @@ export async function getServerSideProps({ req, res }: GetServerSidePropsContext
 const Home: NextPageWithLayout<InferGetStaticPropsType<typeof getServerSideProps>> = ({
   isMobile,
 }) => {
-  return <Marketplace isMobile={isMobile} />;
+  return <Marketplace />;
 };
 
 Home.getLayout = function getLayout(page: React.ReactElement) {
