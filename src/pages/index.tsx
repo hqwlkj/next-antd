@@ -1,25 +1,17 @@
 import Head from 'next/head';
-import { Inter } from '@next/font/google';
-import type { GetServerSidePropsContext, InferGetStaticPropsType } from 'next';
+import type { InferGetStaticPropsType } from 'next';
 import { NextPageWithLayout } from './_app';
 import React from 'react';
 import Layout from '../layouts';
 import Marketplace from '@/components/Marketplace';
-import { isMobileByUserAgent } from '@/shared/utils';
 
-const inter = Inter({ subsets: ['latin'] });
-
-export async function getServerSideProps({ req, res }: GetServerSidePropsContext) {
-  const userAgent = req.headers['user-agent'] || '';
-  const isMobile = isMobileByUserAgent(userAgent);
+export async function getServerSideProps() {
   return {
-    props: { isMobile },
+    props: {},
   };
 }
 
-const Home: NextPageWithLayout<InferGetStaticPropsType<typeof getServerSideProps>> = ({
-  isMobile,
-}) => {
+const Home: NextPageWithLayout<InferGetStaticPropsType<typeof getServerSideProps>> = () => {
   return <Marketplace />;
 };
 
