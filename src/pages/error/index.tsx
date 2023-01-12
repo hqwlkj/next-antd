@@ -2,8 +2,16 @@ import React from 'react';
 import Layout from '@/layouts';
 import Head from 'next/head';
 import styles from './index.module.less';
+import { NextPageWithLayout } from '@/pages/_app';
+import { InferGetStaticPropsType } from 'next';
 
-const ErrorPage = () => {
+export async function getServerSideProps() {
+  return {
+    props: {},
+  };
+}
+
+const ErrorPage: NextPageWithLayout<InferGetStaticPropsType<typeof getServerSideProps>> = () => {
   return (
     <div className={styles.errorPageContainer}>
       <h2 className={styles.title}>

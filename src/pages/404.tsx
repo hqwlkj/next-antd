@@ -7,6 +7,7 @@ const Custom404 = () => {
   useEffect(() => {
     router.push('/error');
   }, [router]);
+  return <div></div>;
 };
 
 export default Custom404;
