@@ -3,23 +3,25 @@ import Layout from '@/layouts';
 import Head from 'next/head';
 import styles from './index.module.less';
 
-const Error = () => {
+const ErrorPage = () => {
   return (
     <div className={styles.errorPageContainer}>
-      <h2 className={styles.title}>Sorry, we couldn't find the page you're looking for.</h2>
+      <h2 className={styles.title}>
+        Sorry, we couldn&apos;t find the page you&apos;re looking for.
+      </h2>
       <span>
         Please make sure you typed in the right URL. You can
         <a target="_blank" href="mailto:creators@pietrastudio.com" rel="noreferrer">
           contact
         </a>
-        Pietra to discuss any problems you're experiencing.
+        Pietra to discuss any problems you&apos;re experiencing.
       </span>
       <img src="/images/404_error.png" alt="404" />
     </div>
   );
 };
 
-Error.getLayout = function getLayout(page: React.ReactElement) {
+ErrorPage.getLayout = function getLayout(page: React.ReactElement) {
   return (
     <Layout
       head={
@@ -40,4 +42,4 @@ Error.getLayout = function getLayout(page: React.ReactElement) {
   );
 };
 
-export default Error;
+export default ErrorPage;
