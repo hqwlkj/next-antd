@@ -6,7 +6,7 @@ const Custom404 = () => {
   const router = useRouter();
   useEffect(() => {
     router.push('/404-not-found');
-  });
+  }, [router]);
 };
 
 export default Custom404;
