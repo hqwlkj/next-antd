@@ -121,7 +121,7 @@ export default function Home({ name }: InferGetStaticPropsType<typeof getServerS
               Instantly deploy your Next.js site to a shareable URL with&nbsp;Vercel.
             </p>
           </a>
-          <Link href="/about" className={styles.card} rel="noopener noreferrer">
+          <Link href="/404-not-found" className={styles.card} rel="noopener noreferrer">
             <h2 className={inter.className}>
               About <span>-&gt;</span>
             </h2>
