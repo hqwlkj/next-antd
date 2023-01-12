@@ -13,7 +13,7 @@ import * as Sentry from '@sentry/react';
 import { Integrations } from '@sentry/tracing';
 import ConfigProvider from '@/context/ConfigProvider';
 import ShoppingCartProvider from '@/context/ShoppingCartProvider';
-import NotFoundPage from '@/pages/404';
+import Error from '@/pages/error';
 import packageInfo from '../../package.json';
 
 Router.events.on('routeChangeStart', NProgress.start);
@@ -47,7 +47,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
 
   return (
     <AntdConfigProvider>
-      <Sentry.ErrorBoundary fallback={NotFoundPage}>
+      <Sentry.ErrorBoundary fallback={Error}>
         <StyleProvider cache={cache}>
           <ConfigProvider>
             <ShoppingCartProvider>{getLayout(<Component {...pageProps} />)}</ShoppingCartProvider>

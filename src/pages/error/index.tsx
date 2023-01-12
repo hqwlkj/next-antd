@@ -3,7 +3,7 @@ import Layout from '@/layouts';
 import Head from 'next/head';
 import styles from './index.module.less';
 
-const NotFoundPage = () => {
+const Error = () => {
   return (
     <div className={styles.errorPageContainer}>
       <h2 className={styles.title}>Sorry, we couldn't find the page you're looking for.</h2>
@@ -19,7 +19,7 @@ const NotFoundPage = () => {
   );
 };
 
-NotFoundPage.getLayout = function getLayout(page: React.ReactElement) {
+Error.getLayout = function getLayout(page: React.ReactElement) {
   return (
     <Layout
       head={
@@ -40,4 +40,4 @@ NotFoundPage.getLayout = function getLayout(page: React.ReactElement) {
   );
 };
 
-export default NotFoundPage;
+export default Error;
