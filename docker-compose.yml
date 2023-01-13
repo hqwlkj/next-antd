@@ -6,3 +6,6 @@ services:
     ports:
       - '80:3000'
     restart: always
+    environment:
+      - NEXT_APP_ENV
+      - NEXT_APP_API_HOST

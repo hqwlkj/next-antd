@@ -62,7 +62,8 @@ deploy:staging:
   needs:
     - build
   variables:
-    APP_ENV: staging
+    NEXT_APP_ENV: staging
+    NEXT_APP_API_HOST: staging
     EB_ENV: pietramarketplace-staging-env
   only:
     - master
@@ -76,7 +77,8 @@ deploy:production:
   needs:
     - build
   variables:
-    APP_ENV: production
+    NEXT_APP_ENV: production
+    NEXT_APP_API_HOST: production
     EB_ENV: pietramarketplace-prod-env
   only:
     - /^v.+$/

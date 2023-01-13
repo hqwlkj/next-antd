@@ -1,39 +1,42 @@
+const path = require('path');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 const withLess = require('next-with-less');
-const { PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD } = require('next/constants');
 
-/** @type {import('next').NextConfig} */
 const nextConfig = (phase) => {
-  console.log('process.env:', process.env);
-  // when started in development mode `next dev` or `npm run dev` regardless of the value of STAGING environment variable
-  const isDev = phase === PHASE_DEVELOPMENT_SERVER;
-  // when `next build` or `npm run build` is used
-  const isProd = phase === PHASE_PRODUCTION_BUILD && process.env.STAGING !== '1';
-  // when `next build` or `npm run build` is used
-  const isStaging = phase === PHASE_PRODUCTION_BUILD && process.env.STAGING === '1';
-
-  console.log(`isDev:${isDev}  isProd:${isProd}   isStaging:${isStaging}`);
-
   const env = {
-    IS_DEV: isDev,
-    IS_PROD: isProd,
-    IS_STAGING: isStaging,
+    NEXT_APP_ENV: process.env.NEXT_APP_ENV,
+    NEXT_APP_API_HOST: process.env.NEXT_APP_API_HOST,
   };
-
-  return {
+  /** @type {import('next').NextConfig} */
+  const config = {
     reactStrictMode: true,
     productionBrowserSourceMaps: true,
     env,
     lessLoaderOptions: {
-      cssModules: false,
+      // cssModules: true,
       lessOptions: {
         javascriptEnabled: true,
         modifyVars: {},
       },
     },
+    // Disable css--modules component styling
+    webpack(config) {
+      //  Source: https://cwtuan.blogspot.com/2022/10/disable-css-module-in-nextjs-v1231-sept.html
+      config.module.rules.forEach((rule) => {
+        const { oneOf } = rule;
+        if (oneOf) {
+          oneOf.forEach((one) => {
+            if (!`${one.issuer?.and}`.includes('_app')) return;
+            one.issuer.and = [path.resolve(__dirname)];
+          });
+        }
+      });
+      return config;
+    },
   };
+  return withBundleAnalyzer(withLess(config));
 };
 
-module.exports = withBundleAnalyzer(withLess(nextConfig));
+module.exports = nextConfig;

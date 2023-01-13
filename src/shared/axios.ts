@@ -7,6 +7,8 @@ const instance = axios.create({
 
 instance.interceptors.response.use(
   (response) => {
+    console.log('===NEXT_APP_ENV====', process.env.NEXT_APP_ENV);
+    console.log('===NEXT_APP_API_HOST====', process.env.NEXT_APP_API_HOST);
     return response;
   },
   (error) => {
