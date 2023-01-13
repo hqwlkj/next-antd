@@ -9,13 +9,11 @@ import '@/styles/fonts.css';
 import 'nprogress/nprogress.css';
 import { ConfigProvider as AntdConfigProvider } from 'antd';
 import { createCache, StyleProvider } from '@ant-design/cssinjs';
-import * as Sentry from '@sentry/react';
 import { Integrations } from '@sentry/tracing';
 import ConfigProvider from '@/context/ConfigProvider';
 import ShoppingCartProvider from '@/context/ShoppingCartProvider';
 import NotFoundPage from '@/pages/404';
 import packageInfo from '../../package.json';
-import Script from 'next/script';
 
 Router.events.on('routeChangeStart', NProgress.start);
 Router.events.on('routeChangeError', NProgress.done);
@@ -28,16 +26,6 @@ export type NextPageWithLayout<P = {}> = NextPage<P> & {
 type AppPropsWithLayout<P = {}> = AppProps<P> & {
   Component: NextPageWithLayout<P>;
 };
-if (process.env.NEXT_APP_ENV === 'staging' || process.env.NEXT_APP_ENV === 'production') {
-  Sentry.init({
-    dsn: 'https://81cc8b0a4eb545449bedad45af7c3496@o907233.ingest.sentry.io/4504489964732416',
-    release: 'marketplace@' + packageInfo.version,
-    integrations: [new Integrations.BrowserTracing()],
-    environment: process.env.NEXT_APP_ENV,
-    tracesSampleRate: 0.5,
-    sampleRate: 0.5,
-  });
-}
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
   // Use the layout defined at the page level, if available
@@ -52,21 +40,6 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         <StyleProvider cache={cache}>
           <ConfigProvider>
             <ShoppingCartProvider>
-              <Script
-                id="google-tag-manager"
-                src={'https://www.googletagmanager.com/gtag/js?id=G-47PJTWDLGL'}
-              />
-              <Script
-                id="google-dataLayer"
-                dangerouslySetInnerHTML={{
-                  __html: `
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                  gtag('config', 'G-47PJTWDLGL');
-                `,
-                }}
-              ></Script>
               {getLayout(<Component {...pageProps} />)}
             </ShoppingCartProvider>
           </ConfigProvider>
