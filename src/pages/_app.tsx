@@ -13,7 +13,7 @@ import * as Sentry from '@sentry/react';
 import { Integrations } from '@sentry/tracing';
 import ConfigProvider from '@/context/ConfigProvider';
 import ShoppingCartProvider from '@/context/ShoppingCartProvider';
-import ErrorPage from '@/pages/error';
+import NotFoundPage from '@/pages/404';
 import packageInfo from '../../package.json';
 
 Router.events.on('routeChangeStart', NProgress.start);
@@ -27,12 +27,12 @@ export type NextPageWithLayout<P = {}> = NextPage<P> & {
 type AppPropsWithLayout<P = {}> = AppProps<P> & {
   Component: NextPageWithLayout<P>;
 };
-if (process.env.APP_ENV !== 'local') {
+if (process.env.NEXT_APP_ENV === 'staging' || process.env.NEXT_APP_ENV === 'production') {
   Sentry.init({
     dsn: 'https://81cc8b0a4eb545449bedad45af7c3496@o907233.ingest.sentry.io/4504489964732416',
     release: 'marketplace@' + packageInfo.version,
     integrations: [new Integrations.BrowserTracing()],
-    environment: process.env.APP_ENV,
+    environment: process.env.NEXT_APP_ENV,
     tracesSampleRate: 0.5,
     sampleRate: 0.5,
   });
@@ -47,7 +47,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
 
   return (
     <AntdConfigProvider>
-      <Sentry.ErrorBoundary fallback={ErrorPage}>
+      <Sentry.ErrorBoundary fallback={NotFoundPage}>
         <StyleProvider cache={cache}>
           <ConfigProvider>
             <ShoppingCartProvider>{getLayout(<Component {...pageProps} />)}</ShoppingCartProvider>
