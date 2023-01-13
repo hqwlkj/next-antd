@@ -36,15 +36,13 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
 
   return (
     <AntdConfigProvider>
-      <Sentry.ErrorBoundary fallback={NotFoundPage}>
-        <StyleProvider cache={cache}>
-          <ConfigProvider>
-            <ShoppingCartProvider>
-              {getLayout(<Component {...pageProps} />)}
-            </ShoppingCartProvider>
-          </ConfigProvider>
-        </StyleProvider>
-      </Sentry.ErrorBoundary>
+      <StyleProvider cache={cache}>
+        <ConfigProvider>
+          <ShoppingCartProvider>
+            {getLayout(<Component {...pageProps} />)}
+          </ShoppingCartProvider>
+        </ConfigProvider>
+      </StyleProvider>
     </AntdConfigProvider>
   );
 }
