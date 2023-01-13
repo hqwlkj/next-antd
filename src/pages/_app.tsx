@@ -15,6 +15,7 @@ import ConfigProvider from '@/context/ConfigProvider';
 import ShoppingCartProvider from '@/context/ShoppingCartProvider';
 import NotFoundPage from '@/pages/404';
 import packageInfo from '../../package.json';
+import Script from 'next/script';
 
 Router.events.on('routeChangeStart', NProgress.start);
 Router.events.on('routeChangeError', NProgress.done);
@@ -50,7 +51,24 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
       <Sentry.ErrorBoundary fallback={NotFoundPage}>
         <StyleProvider cache={cache}>
           <ConfigProvider>
-            <ShoppingCartProvider>{getLayout(<Component {...pageProps} />)}</ShoppingCartProvider>
+            <ShoppingCartProvider>
+              <Script
+                id="google-tag-manager"
+                src={'https://www.googletagmanager.com/gtag/js?id=G-47PJTWDLGL'}
+              />
+              <Script
+                id="google-dataLayer"
+                dangerouslySetInnerHTML={{
+                  __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', 'G-47PJTWDLGL');
+                `,
+                }}
+              ></Script>
+              {getLayout(<Component {...pageProps} />)}
+            </ShoppingCartProvider>
           </ConfigProvider>
         </StyleProvider>
       </Sentry.ErrorBoundary>
