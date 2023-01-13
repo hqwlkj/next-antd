@@ -9,11 +9,8 @@ import '@/styles/fonts.css';
 import 'nprogress/nprogress.css';
 import { ConfigProvider as AntdConfigProvider } from 'antd';
 import { createCache, StyleProvider } from '@ant-design/cssinjs';
-import { Integrations } from '@sentry/tracing';
 import ConfigProvider from '@/context/ConfigProvider';
 import ShoppingCartProvider from '@/context/ShoppingCartProvider';
-import NotFoundPage from '@/pages/404';
-import packageInfo from '../../package.json';
 
 Router.events.on('routeChangeStart', NProgress.start);
 Router.events.on('routeChangeError', NProgress.done);
