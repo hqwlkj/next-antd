@@ -8,6 +8,7 @@ import { getTagColor } from '@/shared/marketplace';
 import _ from 'lodash';
 import { Skeleton } from 'antd';
 import { useConfigProvider } from '@/context/ConfigProvider';
+import { logCommonView } from '@/lib/service';
 
 const FeaturedCreator = ({
   creator,
@@ -19,7 +20,7 @@ const FeaturedCreator = ({
   const { isMobile } = useConfigProvider();
 
   const logClick = () => {
-    // TODO
+    logCommonView(originEventName, creator.storeHandle);
   };
 
   if (_.isEmpty(creator)) {

@@ -1,7 +1,7 @@
 import { SearchOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
 import styles from './index.module.less';
-import { getJewelrySearchSuggestions } from '@/lib/service';
+import { getJewelrySearchSuggestions, logCommonView } from '@/lib/service';
 import _ from 'lodash';
 import { getSubcategoryValueToTextMap } from '@/shared/subcategory-helper';
 import { SearchSuggestions } from '@/types/marketplace.interface';
@@ -9,6 +9,7 @@ import { convertSuggestions, imageTransform, shopAllLink } from '@/shared/utils'
 import Link from 'next/link';
 import classNames from 'classnames';
 import { useRouter } from 'next/router';
+import { EventSource } from '@/shared/event-types';
 
 const UniversalSearch = () => {
   const subcategoryValueMap = getSubcategoryValueToTextMap();
@@ -27,8 +28,7 @@ const UniversalSearch = () => {
         scrollToTop: true,
       }),
     );
-    //TODO logNavLinkClick(searchQuery)
-    //logNavLinkClick(searchQuery)
+    logCommonView(EventSource.SEARCH_TERMS, searchQuery);
   };
 
   const handleSuggestionClick = (search: boolean, text: string = null) => {

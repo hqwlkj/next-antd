@@ -18,10 +18,6 @@ const PopularProducts = ({
 }) => {
   const { isMobile } = useConfigProvider();
 
-  const onPopularItemClick = (productId: number) => {
-    // TODO
-  };
-
   return (
     <div className={classNames(styles.popularProductsContainer, vertical ? styles.vertical : '')}>
       <div className={styles.titleContainer}>

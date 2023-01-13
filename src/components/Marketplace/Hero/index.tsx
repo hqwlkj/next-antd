@@ -12,6 +12,8 @@ import { Skeleton } from 'antd';
 import { imageTransform } from '@/shared/utils';
 import { useConfigProvider } from '@/context/ConfigProvider';
 import { RightOutlined } from '@ant-design/icons';
+import { EventSource } from '@/shared/event-types';
+import { logCommonView } from '@/lib/service';
 
 const Hero = () => {
   const { value: heroValue } = useBusinessSettingsDisplay('MARKETPLACE');
@@ -47,12 +49,12 @@ const Hero = () => {
   };
 
   const logItemClick = (keys: string) => {
-    // TODO
-    // this.$api.loggingService.logCommonView(
-    //   keys ? EventSource.MARKETPLACE_HOMEPAGE_SEARCH_TERM : EventSource.MARKETPLACE_HOMEPAGE_FEATURED_IMAGES,
-    //   keys,
-    //   this.$gtm
-    // )
+    logCommonView(
+      keys
+        ? EventSource.MARKETPLACE_HOMEPAGE_SEARCH_TERM
+        : EventSource.MARKETPLACE_HOMEPAGE_FEATURED_IMAGES,
+      keys,
+    );
   };
 
   const mobileSection = heroData ? (

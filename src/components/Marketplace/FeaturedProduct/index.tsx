@@ -11,6 +11,7 @@ import TooltipAvatar from '@/components/Common/TooltipAvatar';
 import { imageTransform } from '@/shared/utils';
 import { useRouter } from 'next/router';
 import { useConfigProvider } from '@/context/ConfigProvider';
+import { logCommonView } from '@/lib/service';
 interface Props {
   item: NewestFeaturedProductType | FeaturedCreatorProductType;
   showInfo: boolean;
@@ -22,9 +23,8 @@ const FeaturedProduct = ({ item, showInfo, showAvatar, originEventName, customSt
   const router = useRouter();
   const { isMobile } = useConfigProvider();
 
-  const logClick = () => {
-    // TODO
-    // this.$api.loggingService.logCommonView(this.originEventName, this.item.productId, this.$gtm)
+  const logClick = async () => {
+    await logCommonView(originEventName, item.productId);
   };
 
   const image1 = item?.images[0];
@@ -33,7 +33,10 @@ const FeaturedProduct = ({ item, showInfo, showAvatar, originEventName, customSt
 
   return (
     <div
-      onClick={() => router.push(`/shop/${item.productId}`)}
+      onClick={() => {
+        logClick();
+        router.push(`/shop/${item.productId}`);
+      }}
       className={classNames(styles.item, showInfo ? styles.showInfo : '')}
       style={customStyle}
     >

@@ -16,3 +16,5 @@ export const TAGS: Tag[] = [
   { value: 'Organic', color: '#DDEEFD' },
   { value: 'Sexual Health', color: '#BAF7FF' },
 ];
+
+export const FB_ADVERTISER_ID = '489858031489875';

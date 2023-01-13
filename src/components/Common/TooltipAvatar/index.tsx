@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { imageTransform } from '@/shared/utils';
 import classNames from 'classnames';
 import { useConfigProvider } from '@/context/ConfigProvider';
+import { logCommonView } from '@/lib/service';
+import { EventSource } from '@/shared/event-types';
 
 interface Props {
   avatarUrl: string;
@@ -16,8 +18,7 @@ interface Props {
 const TooltipAvatar = ({ avatarUrl, goToUrl, storeId, direction, text }: Props) => {
   const { isMobile } = useConfigProvider();
   const logClick = () => {
-    // TODO
-    // this.$api.loggingService.logCommonView(EventSource.PRODUCT_GRID_ITEM_SHOP_AVATAR, this.storeId, this.$gtm)
+    logCommonView(EventSource.PRODUCT_GRID_ITEM_SHOP_AVATAR, storeId);
   };
 
   return (

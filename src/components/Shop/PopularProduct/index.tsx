@@ -4,11 +4,15 @@ import Link from 'next/link';
 import FeaturedProduct from '@/components/Marketplace/FeaturedProduct';
 import { FeaturedCreatorProductType } from '@/types/marketplace.interface';
 import { formatPrice } from '@/shared/utils';
+import { EventSource } from '@/shared/event-types';
+import { logCommonView } from '@/lib/service';
+import { useRouter } from 'next/router';
+
 const PopularProduct = ({ product }: { product: FeaturedCreatorProductType }) => {
+  const router = useRouter();
   const handleClick = (productId: number) => {
-    // TODO
-    // const content = `productId: ${productId}, storeId: ${this.product.storeId}, originPath: ${this.$route.path}, destinationPath: /shop/${productId}, section: Popular Products`
-    // this.$api.loggingService.logCommonView(EventSource.MARKETPLACE_POPULAR_PRODUCT_ITEM, content, this.$gtm)
+    const content = `productId: ${productId}, storeId: ${product.storeId}, originPath: ${router.pathname}, destinationPath: /shop/${productId}, section: Popular Products`;
+    logCommonView(EventSource.MARKETPLACE_POPULAR_PRODUCT_ITEM, content);
   };
 
   return (
