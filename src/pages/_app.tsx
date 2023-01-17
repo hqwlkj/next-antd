@@ -11,6 +11,7 @@ import { ConfigProvider as AntdConfigProvider } from 'antd';
 import { createCache, StyleProvider } from '@ant-design/cssinjs';
 import ConfigProvider from '@/context/ConfigProvider';
 import ShoppingCartProvider from '@/context/ShoppingCartProvider';
+import { useServerInsertedHTML } from 'next/navigation';
 
 Router.events.on('routeChangeStart', NProgress.start);
 Router.events.on('routeChangeError', NProgress.done);
@@ -29,7 +30,17 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
 
   // SSR Render
-  const cache = createCache();
+const [cache] = useState(() => createCache());
+
+  useServerInsertedHTML(() => {
+    return (
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `</script>${extractStyle(cache)}<script>`,
+        }}
+      />
+    );
+  });
 
   return (
     <AntdConfigProvider>
