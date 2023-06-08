@@ -1,4 +1,9 @@
-<p align="center" style="margin-top: 158px">
+
+<br/>
+<br/>
+<br/>
+<br/>
+<p align="center">
   <a href='https://nextjs.org/'>
 <img src="https://nextjs.org/static/favicon/safari-pinned-tab.svg" width="60" alt="nextjs"/>
 </a>
