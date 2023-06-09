@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import { Router } from 'next/router';
@@ -8,10 +8,11 @@ import '@/styles/globals.less';
 import '@/styles/fonts.css';
 import 'nprogress/nprogress.css';
 import { ConfigProvider as AntdConfigProvider } from 'antd';
-import { createCache, StyleProvider } from '@ant-design/cssinjs';
+import { createCache, extractStyle, StyleProvider } from '@ant-design/cssinjs';
 import ConfigProvider from '@/context/ConfigProvider';
 import ShoppingCartProvider from '@/context/ShoppingCartProvider';
 import { useServerInsertedHTML } from 'next/navigation';
+import Script from 'next/script';
 
 Router.events.on('routeChangeStart', NProgress.start);
 Router.events.on('routeChangeError', NProgress.done);
@@ -30,13 +31,14 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
 
   // SSR Render
-const [cache] = useState(() => createCache());
+  const [cache] = useState(() => createCache());
 
   useServerInsertedHTML(() => {
     return (
-      <script
+      <Script
+        id="cache-styles"
         dangerouslySetInnerHTML={{
-          __html: `</script>${extractStyle(cache)}<script>`,
+          __html: `<Script>${extractStyle(cache)}</Script>`,
         }}
       />
     );
@@ -46,9 +48,7 @@ const [cache] = useState(() => createCache());
     <AntdConfigProvider>
       <StyleProvider cache={cache}>
         <ConfigProvider>
-          <ShoppingCartProvider>
-            {getLayout(<Component {...pageProps} />)}
-          </ShoppingCartProvider>
+          <ShoppingCartProvider>{getLayout(<Component {...pageProps} />)}</ShoppingCartProvider>
         </ConfigProvider>
       </StyleProvider>
     </AntdConfigProvider>
