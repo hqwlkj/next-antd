@@ -1,11 +1,11 @@
 import React from 'react';
-import styles from './index.module.less';
 import { useRouter } from 'next/router';
 import { GlobalHeader, GlobalFooter } from '@/components/Layouts';
 import { useConfigProvider } from '@/context/ConfigProvider';
 import classNames from 'classnames';
 import SellOnPietraDialog from '../components/Layouts/SellOnPietraDialog';
 import { useToggle } from 'react-use';
+import './index.less';
 
 interface LayoutProps {
   /**
@@ -30,9 +30,9 @@ const Layout = ({ children, head }: LayoutProps) => {
   const [open, toggle] = useToggle(false);
 
   return (
-    <div className={styles.layout}>
+    <div className={'layout'}>
       {head}
-      <header className={styles.header}>
+      <header className={'header'}>
         <GlobalHeader
           isMobile={isMobile}
           isMarketplaceHome={pathname === '/'}
@@ -57,13 +57,13 @@ const Layout = ({ children, head }: LayoutProps) => {
         <SellOnPietraDialog isMobile={isMobile} isModalOpen={open} onCancel={toggle} />
       </header>
       <main
-        className={classNames(styles.main, {
-          [styles.mobile]: isMobile,
+        className={classNames('main', {
+          mobile: isMobile,
         })}
       >
         {children}
       </main>
-      <footer className={styles.footer}>
+      <footer className={'footer'}>
         <GlobalFooter />
       </footer>
     </div>
