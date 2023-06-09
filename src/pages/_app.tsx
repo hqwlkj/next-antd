@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import { Router } from 'next/router';

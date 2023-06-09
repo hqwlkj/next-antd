@@ -3,6 +3,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 const withLess = require('next-with-less');
+const isProd = process.env.NODE_ENV === 'production';
 
 const nextConfig = (phase) => {
   const env = {
@@ -11,9 +12,22 @@ const nextConfig = (phase) => {
   };
   /** @type {import('next').NextConfig} */
   const config = {
+    output: 'standalone',
     reactStrictMode: true,
+    poweredByHeader: false,
     productionBrowserSourceMaps: true,
     env,
+    publicRuntimeConfig: env,
+    compiler: {
+      // Remove `console.*` output except `console.error`
+      removeConsole: isProd
+        ? {
+            exclude: ['error'],
+          }
+        : false,
+      // Uncomment this to suppress all logs.
+      // removeConsole: true,
+    },
     lessLoaderOptions: {
       // cssModules: true,
       lessOptions: {
