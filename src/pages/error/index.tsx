@@ -1,9 +1,10 @@
 import React from 'react';
 import Layout from '@/layouts';
 import Head from 'next/head';
-import styles from './index.module.less';
 import { NextPageWithLayout } from '@/pages/_app';
 import { InferGetStaticPropsType } from 'next';
+import Link from 'next/link';
+import './index.less';
 
 export async function getServerSideProps() {
   return {
@@ -13,15 +14,13 @@ export async function getServerSideProps() {
 
 const ErrorPage: NextPageWithLayout<InferGetStaticPropsType<typeof getServerSideProps>> = () => {
   return (
-    <div className={styles.errorPageContainer}>
-      <h2 className={styles.title}>
-        Sorry, we couldn&apos;t find the page you&apos;re looking for.
-      </h2>
+    <div className={'error-page-container'}>
+      <h2 className={'title'}>Sorry, we couldn&apos;t find the page you&apos;re looking for.</h2>
       <span>
         Please make sure you typed in the right URL. You can
-        <a target="_blank" href="mailto:creators@pietrastudio.com" rel="noreferrer">
+        <Link target="_blank" href="mailto:creators@pietrastudio.com" rel="noreferrer">
           contact
-        </a>
+        </Link>
         Pietra to discuss any problems you&apos;re experiencing.
       </span>
       <img src="/images/404_error.png" alt="404" />
