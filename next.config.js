@@ -14,6 +14,7 @@ const nextConfig = (phase) => {
   const config = {
     output: 'standalone',
     reactStrictMode: true,
+    transpilePackages: ['antd'],
     poweredByHeader: false,
     productionBrowserSourceMaps: true,
     env,
