@@ -1,7 +1,8 @@
 @font-face {
   font-family: Attila-Semibold;
   font-display: auto;
-  src: local('AttilaSansUniform-Semibold'),
+  src:
+    local('AttilaSansUniform-Semibold'),
     url('/fonts/AttilaSansUniform-Semibold.woff2') format('woff2'),
     url('/fonts/AttilaSansUniform-Semibold.woff') format('woff');
   font-style: normal;
@@ -12,7 +13,9 @@
 @font-face {
   font-family: Attila-Bold;
   font-display: auto;
-  src: local('AttilaSansUniform-Bold'), url('/fonts/AttilaSansUniform-Bold.woff2') format('woff2'),
+  src:
+    local('AttilaSansUniform-Bold'),
+    url('/fonts/AttilaSansUniform-Bold.woff2') format('woff2'),
     url('/fonts/AttilaSansUniform-Bold.woff') format('woff');
   font-style: normal;
   unicode-range: U+000-5FF;
@@ -22,7 +25,8 @@
 @font-face {
   font-family: Attila-Regular;
   font-display: auto;
-  src: local('AttilaSansUniform-Regular'),
+  src:
+    local('AttilaSansUniform-Regular'),
     url('/fonts/AttilaSansUniform-Regular.woff2') format('woff2'),
     url('/fonts/AttilaSansUniform-Regular.woff') format('woff');
   font-style: normal;
@@ -34,7 +38,9 @@
   font-family: Labil-Regular;
   font-feature-settings: 'calt' off;
   font-display: auto;
-  src: local('StabilGrotesk-Regular'), url('/fonts/StabilGrotesk-Regular.woff2') format('woff2'),
+  src:
+    local('StabilGrotesk-Regular'),
+    url('/fonts/StabilGrotesk-Regular.woff2') format('woff2'),
     url('/fonts/StabilGrotesk-Regular.woff') format('woff');
   font-style: normal;
   unicode-range: U+000-5FF;
@@ -45,7 +51,9 @@
   font-family: Labil-Bold;
   font-feature-settings: 'calt' off;
   font-display: auto;
-  src: local('StabilGrotesk-Bold'), url('/fonts/StabilGrotesk-Bold.woff2') format('woff2'),
+  src:
+    local('StabilGrotesk-Bold'),
+    url('/fonts/StabilGrotesk-Bold.woff2') format('woff2'),
     url('/fonts/StabilGrotesk-Bold.woff') format('woff');
   font-style: normal;
   unicode-range: U+000-5FF;
