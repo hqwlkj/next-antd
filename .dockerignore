@@ -8,3 +8,6 @@
 !.env.*
 !next.config.js
 !tsconfig.json
+!.npmrc
+!.nvmrc
+!sentry.*.js
