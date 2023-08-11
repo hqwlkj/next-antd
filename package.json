@@ -16,7 +16,7 @@
     "prettier": "prettier -c --write src/**/*"
   },
   "dependencies": {
-    "@ant-design/icons": "^5.2.5",
+    "@ant-design/icons": "^5.2.2",
     "@sentry/nextjs": "^7.63.0",
     "antd": "^5.8.2",
     "axios": "1.4.0",
