@@ -3,8 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "license": "MIT",
-  "author": "hqwlkj@sina.com",
-  "repository": "https://github.com/hqwlkj/next-antd",
+  "author": "{{author}}",
+  "description": "{{description}}",
+  "repository": {
+    "type": "git",
+    "url": "{{git}}"
+  },
   "scripts": {
     "analyze": "cross-env ANALYZE=true yarn build",
     "dev": "next dev -p 4100",
