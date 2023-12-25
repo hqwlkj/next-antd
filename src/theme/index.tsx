@@ -1,7 +1,7 @@
 import React from 'react';
 import { ConfigProvider } from 'antd';
 
-const withTheme = (node: JSX.Element) => (
+const withTheme = (node: React.ReactNode) => (
   <ConfigProvider
     prefixCls="next-antd"
     iconPrefixCls="next-antd-icon"
@@ -10,7 +10,7 @@ const withTheme = (node: JSX.Element) => (
         colorPrimary: '#D2906A',
         borderRadius: 0,
         fontFamily: 'Labil-Regular',
-        fontSize: 13,
+        fontSize: 14,
         colorLink: '#141414',
       },
       components: {},
