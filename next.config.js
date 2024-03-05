@@ -22,7 +22,17 @@ const nextConfig = (phase) => {
   const config = {
     output: 'standalone',
     reactStrictMode: true,
-    transpilePackages: ['@ant-design/icons'],
+    transpilePackages: [
+      'antd',
+      '@ant-design',
+      'rc-util',
+      'rc-pagination',
+      'rc-picker',
+      'rc-notification',
+      'rc-tooltip',
+      'rc-tree',
+      'rc-table',
+    ],
     poweredByHeader: false,
     productionBrowserSourceMaps: true,
     env,
