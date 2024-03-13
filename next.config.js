@@ -54,6 +54,9 @@ const nextConfig = (phase) => {
         modifyVars: {},
       },
     },
+    images: {
+      minimumCacheTTL: 86400
+    },
     // Disable css--modules component styling
     webpack(config) {
       //  Source: https://cwtuan.blogspot.com/2022/10/disable-css-module-in-nextjs-v1231-sept.html
